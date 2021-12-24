@@ -1,8 +1,10 @@
 import NftList from "../components/NftList/NftList";
 import SearchBar from "../components/SearchBar/SearchBar";
-import axios from "axios";
+
 import React, { Component, useEffect, useState } from "react";
 import { getNfts } from "../utils/getNfts";
+import CelebrityList from "../components/CelebrityList/CelebrityList";
+import "./GalleryPage.scss";
 
 const GalleryPage = () => {
 	const [nfts, setNfts] = useState([]);
@@ -24,13 +26,26 @@ const GalleryPage = () => {
 	console.log("render");
 
 	return (
-		<main>
-			<div className="search-container">
-				<SearchBar onSearch={handleSearch} />
-				{address && <h2>Searching nft s on address: {address}</h2>}
-			</div>
-			{nfts && <NftList nfts={nfts} totalCount={totalCount} />}
-		</main>
+		<>
+			<main className="gallery">
+				<section className="gallery__celebrities">
+					<CelebrityList />
+				</section>
+				<div className="gallery__main-container">
+					<div className="gallery__search-container">
+						<SearchBar onSearch={handleSearch} />
+						{address && (
+							<h2>Searching nft s on address: {address}</h2>
+						)}
+					</div>
+					<section className="gallery__gallery">
+						{nfts && (
+							<NftList nfts={nfts} totalCount={totalCount} />
+						)}
+					</section>
+				</div>
+			</main>
+		</>
 	);
 };
 

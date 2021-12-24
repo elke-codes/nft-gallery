@@ -1,0 +1,13 @@
+.gallery {
+	display: flex;
+
+	&__celebrities {
+		width: 40%;
+	}
+	&__main-container {
+		margin-left: 3rem;
+	}
+
+	&__gallery {
+	}
+}

@@ -1,0 +1,58 @@
+[
+	{
+		"name": "Jay-Z",
+		"address": "0x3b417faee9d2ff636701100891dc2755b5321cc3"
+	},
+	{
+		"name": "Mike Tyson",
+		"address": "0x7217bc604476859303a27f111b187526231a300c"
+	},
+	{
+		"name": "3LAU",
+		"address": "0xd2aff66959ee0e6f92ee02d741071ddb5084bebb"
+	},
+	{
+		"name": "Stephen Curry",
+		"address": "0x3becf83939f34311b6bee143197872d877501b11"
+	},
+	{
+		"name": "Lindsay Lohan",
+		"address": "0x3781d92e5449b5b689fee308ded44882085b6312"
+	},
+	{
+		"name": "Mark Cuban",
+		"address": "0xa679c6154b8d4619af9f83f0bf9a13a680e01ecf"
+	},
+	{
+		"name": "Snoop Dogg",
+		"address": "0xce90a7949bb78892f159f428d0dc23a8e3584d75"
+	},
+	{
+		"name": "Serena Williams",
+		"address": "0x0864224f3cc570ab909ebf619f7583ef4a50b826"
+	},
+	{
+		"name": "JaRule",
+		"address": "0x8d3bc45d7b30013c37c141f6ce7c981b2613efaa"
+	},
+	{
+		"name": "Shaquille O'Neal",
+		"address": "0x3c6aeff92b4b35c2e1b196b57d0f8ffb56884a17"
+	},
+	{
+		"name": "Ellijah Wood",
+		"address": "0xf6de94be96f80602d90bf29bd9e88a0e843b2eb9"
+	},
+	{
+		"name": "Reese Witherspoon",
+		"address": "0x7948aa99e095dbfc1971bc8d2d1173893146630e"
+	},
+	{
+		"name": "Jimmy Fallon",
+		"address": "0x0394451c1238cec1e825229e692aa9e428c107d8/"
+	},
+	{
+		"name": "Post Malone",
+		"address": "0xbea020c3bd417f30de4d6bd05b0ed310ac586cc0"
+	}
+]

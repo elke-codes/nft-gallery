@@ -1,26 +1,17 @@
-import { BrowserRouter, Switch } from "react-router-dom";
 import NftList from "../components/NftList/NftList";
 import SearchBar from "../components/SearchBar/SearchBar";
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 
-class GalleryPage extends Component {
-	state = {
-		searchQuery: ""
-	};
+const GalleryPage = () => {
+	const [nfts, setNfts] = useState([]);
 
-	handleSearch = (userInput) => {
-		this.setState({
-			searchQuery: userInput
-		});
+	const [address, setAddress] = useState();
 
-		this.getNFTs();
-	};
-
-	getNFTs = () => {
+	const getNFTs = () => {
 		axios
 			.get(
-				`https://deep-index.moralis.io/api/v2/${this.state.searchQuery}nft?chain=eth&format=decimal`,
+				`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal`,
 				{
 					headers: {
 						"X-API-KEY":
@@ -29,27 +20,51 @@ class GalleryPage extends Component {
 				}
 			)
 			.then((result) => {
-				console.log(result);
-				// nftList = result;
+				// const metadata = JSON.parse(result.data.result[0].metadata);
+				// console.log(metadata.name);
+				console.log(result.data.result);
+				console.log(result.data);
+				// this.setState({
+				// 	nftData: result.data,
+				// 	nftMetaData: result.data.result.map((nft) => {
+				// 		return JSON.parse(nft.metadata);
+				// 	})
+				// });
+				setNfts(result.data);
 			})
 			.catch((error) => console.log(error));
 	};
 
-	render() {
-		return (
-			<main>
-				<div className="search-container">
-					<SearchBar onSearch={this.handleSearch} />
-					{this.state.searchQuery && (
-						<h2>
-							Searching nft s on address: {this.state.searchQuery}
-						</h2>
-					)}
-				</div>
-				<NftList searchQuery={this.state.searchQuery} />
-			</main>
-		);
-	}
-}
+	useEffect(() => {
+		getNFTs();
+	}, [address]);
+
+	const handleSearch = (address) => {
+		setAddress(address);
+	};
+	// componentDidUpdate(prevProps){
+	// 	if (prevProps.address !== this.address){
+
+	// 	}
+	// }
+
+	console.log("render");
+
+	return (
+		<main>
+			<div className="search-container">
+				<SearchBar onSearch={handleSearch} />
+				{address && <h2>Searching nft s on address: {address}</h2>}
+			</div>
+			{nfts && <NftList nfts={nfts} />}
+		</main>
+	);
+};
 
 export default GalleryPage;
+
+// state = {
+// 	address: "",
+// 	nftData: null,
+// 	nftMetaData: null
+// };

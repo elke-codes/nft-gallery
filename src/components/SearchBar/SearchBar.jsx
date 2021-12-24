@@ -12,6 +12,7 @@ const SearchBar = (props) => {
 	return (
 		<>
 			<form className="search-form" onSubmit={handleSubmit}>
+				<p>Paste the ethereum address you want to check here and go!</p>
 				<input
 					type="text"
 					placeholder="Search by address"

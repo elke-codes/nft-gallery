@@ -1,4 +1,30 @@
-.celebrities {
-	width: 100%;
+.celebrity {
+	min-width: 30%;
+	max-width: 30%;
 	margin-top: 6rem;
+
+	&__link {
+		text-decoration: none;
+		color: black;
+		width: 100%;
+	}
+
+	&__info {
+		display: flex;
+		margin-bottom: 2rem;
+		// width: 100%;
+		&:hover {
+			background-color: lightgray;
+		}
+	}
+	&__title {
+		// width: 100%;
+	}
+
+	&__image {
+		width: 7.5rem;
+		height: 3.75rem;
+		border-radius: 0.25rem;
+		padding-right: 2rem;
+	}
 }

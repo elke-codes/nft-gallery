@@ -39,7 +39,7 @@ export const getNfts = async (address) => {
 
 		return {
 			nfts,
-			totalCount: data.data.total_count
+			totalCount: data.data.total
 		};
 	} catch (e) {
 		console.log("axios error", e);

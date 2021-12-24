@@ -3,6 +3,7 @@ import NftCard from "../NftCard/NftCard";
 import "./NftList.scss";
 
 const NftList = (props) => {
+	console.log("from nftlist", props);
 	return (
 		<>
 			{props.nfts.length > 0 && (

@@ -5,7 +5,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Switch>
-				{/* <Route path="/eth/:address" component={GalleryPage} /> */}
+				<Route path="/eth/:address" component={GalleryPage} />
 				<Route path="/" exact component={GalleryPage} />
 			</Switch>
 		</BrowserRouter>

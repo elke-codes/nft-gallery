@@ -2,51 +2,24 @@ import NftList from "../components/NftList/NftList";
 import SearchBar from "../components/SearchBar/SearchBar";
 import axios from "axios";
 import React, { Component, useEffect, useState } from "react";
+import { getNfts } from "../utils/getNfts";
 
 const GalleryPage = () => {
 	const [nfts, setNfts] = useState([]);
-
+	const [totalCount, setTotalCount] = useState();
 	const [address, setAddress] = useState();
 
-	const getNFTs = () => {
-		axios
-			.get(
-				`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal`,
-				{
-					headers: {
-						"X-API-KEY":
-							"csUE0cmbWJageAjqXURl5CahhEgpObzsuCpE5bjBKRQl16ArCB556UmPPvv8qGj7"
-					}
-				}
-			)
-			.then((result) => {
-				// const metadata = JSON.parse(result.data.result[0].metadata);
-				// console.log(metadata.name);
-				console.log(result.data.result);
-				console.log(result.data);
-				// this.setState({
-				// 	nftData: result.data,
-				// 	nftMetaData: result.data.result.map((nft) => {
-				// 		return JSON.parse(nft.metadata);
-				// 	})
-				// });
-				setNfts(result.data);
-			})
-			.catch((error) => console.log(error));
-	};
-
-	useEffect(() => {
-		getNFTs();
+	useEffect(async () => {
+		// destructuring is the same as writing const nftResponse = getNFTS(address) and then below using nftResponse.nfts, but destructuring is easier. our getNFTsfunction returns us an object so we need toa ccess the properties of that object either via destructuring or dot notation to use the response. this is the same as calling axios.get and geting back `resolve.data`, right? you can say `const {data } = resolve, or `const data = resolve.data`.
+		const { nfts, totalCount } = await getNfts(address);
+		console.log("NFTS", nfts, "TOTAL COUNT", totalCount);
+		setNfts(nfts);
+		setTotalCount(totalCount);
 	}, [address]);
 
 	const handleSearch = (address) => {
 		setAddress(address);
 	};
-	// componentDidUpdate(prevProps){
-	// 	if (prevProps.address !== this.address){
-
-	// 	}
-	// }
 
 	console.log("render");
 
@@ -56,15 +29,9 @@ const GalleryPage = () => {
 				<SearchBar onSearch={handleSearch} />
 				{address && <h2>Searching nft s on address: {address}</h2>}
 			</div>
-			{nfts && <NftList nfts={nfts} />}
+			{nfts && <NftList nfts={nfts} totalCount={totalCount} />}
 		</main>
 	);
 };
 
 export default GalleryPage;
-
-// state = {
-// 	address: "",
-// 	nftData: null,
-// 	nftMetaData: null
-// };

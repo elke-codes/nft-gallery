@@ -13,7 +13,7 @@ const GalleryPage = () => {
 	const [celebrity, setCelebrity] = useState();
 
 	useEffect(async () => {
-		// destructuring is the same as writing const nftResponse = getNFTS(address) and then below using nftResponse.nfts, but destructuring is easier. our getNFTsfunction returns us an object so we need toa ccess the properties of that object either via destructuring or dot notation to use the response. this is the same as calling axios.get and geting back `resolve.data`, right? you can say `const {data } = resolve, or `const data = resolve.data`.
+		// destructuring is the same as writing const nftResponse = getNFTS(address) and then below using nftResponse.nfts, but destructuring is easier. our getNFTsfunction returns us an object so we need toa ccess the properties of that object either via destructuring or dot notation to use the response. this is the same as calling axios.get and geting back `resolve.data`, you can say `const {data } = resolve, or `const data = resolve.data`.
 		const { nfts, totalCount } = await getNfts(address);
 		console.log("NFTS", nfts, "TOTAL COUNT", totalCount);
 		setNfts(nfts);

@@ -22,7 +22,7 @@ const CelebrityList = (props) => {
 			{celebrityData.map((celebrity) => {
 				return (
 					<Link
-						to={`/eth/${celebrity.address}`}
+						to={`gallery/eth/${celebrity.address}`}
 						// key={video.id}
 						className="celebrity__link"
 						onClick={() => {

@@ -1,12 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Header.scss";
 
 const Header = () => {
 	return (
-		<div className="header">
+		<header className="header">
 			<Logo />
-		</div>
+			<nav className="header__nav">
+				<Link to="/" className="header__nav-link">
+					Home
+				</Link>
+				<Link to="/gallery" className="header__nav-link">
+					ETH Gallery
+				</Link>
+				<Link to="/" className="header__nav-link">
+					Login
+				</Link>
+			</nav>
+		</header>
 	);
 };
 

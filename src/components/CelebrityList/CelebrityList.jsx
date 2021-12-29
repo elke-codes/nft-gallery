@@ -29,11 +29,6 @@ const CelebrityList = (props) => {
 							handleClick(celebrity.address, celebrity.name);
 						}}>
 						<div className="celebrity__info">
-							<img
-								className="celebrity__image"
-								src="https://plchldr.co/i/20x20"
-							/>
-
 							<p className="celebrity__name">{celebrity.name}</p>
 						</div>
 					</Link>

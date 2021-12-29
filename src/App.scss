@@ -1,3 +1,5 @@
+@use "./styles/partials/colors" as *;
+
 :root {
 	--surface-color: #fff;
 	--curve: 40;
@@ -9,8 +11,9 @@
 
 body {
 	font-family: "Noto Sans JP", sans-serif;
-	background-color: #fef8f8;
+	// background-color: $yellow;
 	// margin: 20rem;
+	// overflow: hidden;
 }
 a {
 	text-decoration: none;

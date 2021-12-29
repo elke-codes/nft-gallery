@@ -1,0 +1,13 @@
+// babel is the JS ES6 compiler. it turns new javascript (Es6) into old javascript.
+// we need this because the app with `create-react-app` does all thsi shit behind the scenes.
+// jest lives outside of this and needs this expliciotly configured for tests to run Import and other
+// stuff like async/await.
+{
+  "env": {
+    "test": {
+      "plugins": [
+        "@babel/plugin-transform-modules-commonjs"
+      ]
+    }
+  }
+}

@@ -1,19 +1,6 @@
 // Author: Mojtaba Seyedi
 // https://codepen.io/seyedi/pen/zYoeLEv
-
-:root {
-	--surface-color: #fff;
-	--curve: 40;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-body {
-	font-family: "Noto Sans JP", sans-serif;
-	background-color: #fef8f8;
-}
+@use "../../styles/partials/colors" as *;
 
 .card {
 	position: relative;
@@ -24,6 +11,8 @@ body {
 	text-decoration: none;
 	// max-width: 30%;
 	// margin: 3rem;
+	background-color: #ffffff;
+	padding: 1rem;
 }
 
 .card__image {
@@ -111,5 +100,6 @@ body {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
-	overflow: hidden;
+	overflow: auto;
+	// height: min-content;
 }

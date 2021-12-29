@@ -4,8 +4,8 @@ import "./NftCard.scss";
 const NftCard = (props) => {
 	return (
 		<>
-			<li>
-				<a href="" className="card">
+			<li className="card">
+				<a href="">
 					<h2 className="card__collection-name">
 						{props.nft.name ? props.nft.name : null}
 					</h2>

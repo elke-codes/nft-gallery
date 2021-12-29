@@ -1,5 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import GalleryPage from "./pages/GalleryPage";
+import "./App.scss";
 
 function App() {
 	return (

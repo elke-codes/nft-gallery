@@ -16,8 +16,8 @@ const HomePage = () => {
 					too.
 				</p>
 				<p className="homepage__copy">
-					As I grow and learn, I will blockchains to browse through,
-					like Solana for example.
+					As I grow and learn, I will add more blockchains to browse
+					through, like Solana for example.
 				</p>
 				<p className="homepage__copy">
 					Let me know what you think! And happy browsing throught the

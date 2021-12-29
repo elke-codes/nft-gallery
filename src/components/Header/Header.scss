@@ -1,11 +1,13 @@
 .header {
-	background-color: #fff;
+	background-color: rgba(255, 255, 255);
 	padding: 1rem 2rem;
 	display: flex;
 	justify-content: space-between;
-
 	align-items: center;
-
+	height: 10%;
+	position: fixed;
+	width: 100%;
+	z-index: 5;
 	&__nav-link {
 		margin-left: 2rem;
 		&:hover {

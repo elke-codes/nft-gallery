@@ -11,12 +11,24 @@
 
 body {
 	font-family: "Poppins", sans-serif;
-	// background: linear-gradient(45deg, #a2c8ac, #caaca3);
+
 	background-color: rgba(209, 170, 185, 0.1);
-	// margin: 0 3rem;
-	// overflow: hidden;
+	margin: 0;
 }
 a {
 	text-decoration: none;
 	color: black;
+}
+ul {
+	margin: 0;
+}
+li {
+	list-style: none;
+}
+p {
+	margin: 0;
+}
+
+.content-container {
+	min-height: 85vh;
 }

@@ -1,0 +1,28 @@
+.footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem 0;
+	background-color: black;
+	width: 100%;
+	height: 15vh;
+
+	&__name {
+		padding-bottom: 1rem;
+		color: white;
+	}
+	&__list {
+		display: flex;
+		align-items: center;
+	}
+
+	&__list-item {
+		padding-right: 2rem;
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+	&__link-email {
+		font-size: 2.5rem;
+	}
+}

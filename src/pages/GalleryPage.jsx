@@ -36,11 +36,11 @@ const GalleryPage = () => {
 				<div className="gallery__main-container">
 					<div className="gallery__search-container">
 						<SearchBar onSearch={handleSearch} />
-						{address && (
-							<h2>Searching nft s on address: {address}</h2>
-						)}
+					</div>
+					<div className="gallery__found-info">
 						{/* if current address  = a celebrity address : show "showing celebrity.name+'s collection" */}
-						{celebrity && <h2>Showing nft s from {celebrity}</h2>}
+						{celebrity && <h2>{celebrity}'s Nft Collection</h2>}
+						{address && <p>ETH address: {address}</p>}
 					</div>
 					<section className="gallery__gallery">
 						{nfts && (

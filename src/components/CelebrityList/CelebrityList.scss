@@ -1,7 +1,11 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
 .celebrity {
 	// min-width: 30%;
 	// max-width: 30%;
 	margin-top: 6rem;
+	@include padding-sections;
 
 	&__link {
 		text-decoration: none;
@@ -11,14 +15,18 @@
 
 	&__info {
 		display: flex;
-		margin-bottom: 2rem;
-		// width: 100%;
+		// margin-bottom: 2rem;
+		width: 50%;
+		// width: fit-content;
+		padding: 0 1rem;
+		border-radius: 5px;
 		&:hover {
-			background-color: lightgray;
+			background-color: #a2c8ac;
 		}
 	}
 	&__title {
 		// width: 100%;
+		font-size: 1rem;
 	}
 
 	&__image {

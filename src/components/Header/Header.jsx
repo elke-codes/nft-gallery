@@ -1,11 +1,13 @@
 import React from "react";
-import Logo
+import Logo from "../Logo/Logo";
+import "./Header.scss";
+
 const Header = () => {
 	return (
-    <>
-    <Logo />
-    </>
-  );
+		<div className="header">
+			<Logo />
+		</div>
+	);
 };
 
 export default Header;

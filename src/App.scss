@@ -1,5 +1,5 @@
 @use "./styles/partials/colors" as *;
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,400&display=swap");
 :root {
 	--surface-color: #fff;
 	--curve: 40;
@@ -10,11 +10,13 @@
 }
 
 body {
-	font-family: "Noto Sans JP", sans-serif;
-	// background-color: $yellow;
-	// margin: 20rem;
+	font-family: "Poppins", sans-serif;
+	// background: linear-gradient(45deg, #a2c8ac, #caaca3);
+	background-color: rgba(209, 170, 185, 0.1);
+	// margin: 0 3rem;
 	// overflow: hidden;
 }
 a {
 	text-decoration: none;
+	color: black;
 }

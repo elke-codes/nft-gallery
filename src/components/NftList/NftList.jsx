@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NftCard from "../NftCard/NftCard";
 import "./NftList.scss";
 
@@ -9,6 +9,7 @@ const NftList = (props) => {
 			{props.nfts.length > 0 && (
 				<ul className="cards">
 					{props.nfts.map((nft) => {
+						console.log("mapping");
 						return <NftCard nft={nft} />;
 					})}
 				</ul>

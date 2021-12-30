@@ -20,8 +20,15 @@ const HomePage = () => {
 					through, like Solana for example.
 				</p>
 				<p className="homepage__copy">
-					Let me know what you think! And happy browsing throught the
-					wonderworld of digital art collections!
+					<a
+						href="mailto:elke.codes@gmail.com"
+						title="Send me an email!"
+						className="homepage__copy-email">
+						{" "}
+						Let me know what you think!
+					</a>{" "}
+					And happy browsing throught the wonderworld of digital art
+					collections!
 				</p>
 				<button className="homepage__button">
 					<Link to="/gallery">Check out the NFT Gallery</Link>

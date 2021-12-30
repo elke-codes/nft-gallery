@@ -1,11 +1,11 @@
-import NftList from "../components/NftList/NftList";
-import SearchBar from "../components/SearchBar/SearchBar";
+import NftList from "../../components/NftList/NftList";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 import React, { Component, useEffect, useState } from "react";
-import { getNfts } from "../utils/getNfts";
-import CelebrityList from "../components/CelebrityList/CelebrityList";
+import { getNfts } from "../../utils/getNfts";
+import CelebrityList from "../../components/CelebrityList/CelebrityList";
 import "./GalleryPage.scss";
-import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 const GalleryPage = () => {
 	const [nfts, setNfts] = useState([]);
@@ -13,13 +13,34 @@ const GalleryPage = () => {
 	const [address, setAddress] = useState();
 	const [celebrity, setCelebrity] = useState();
 
+	const [displayedNfts, setDisplayedNfts] = useState([]);
+	const batchSize = 20;
+	const [currentIndex, setCurrentIndex] = useState(0);
+
+	const getNftsToDisplay = () => {
+		if (!nfts.length) {
+			console.log("no length of all nfts, exiting early");
+			return;
+		}
+
+		const nextNfts = nfts.slice(currentIndex, batchSize);
+		console.log("nextnfts", nextNfts);
+		console.log("displayedNfts1", displayedNfts);
+		setDisplayedNfts(displayedNfts.concat(nextNfts));
+		console.log("displayedNfts2", displayedNfts);
+		setCurrentIndex(currentIndex + batchSize);
+	};
+
 	useEffect(async () => {
-		// destructuring is the same as writing const nftResponse = getNFTS(address) and then below using nftResponse.nfts, but destructuring is easier. our getNFTsfunction returns us an object so we need toa ccess the properties of that object either via destructuring or dot notation to use the response. this is the same as calling axios.get and geting back `resolve.data`, you can say `const {data } = resolve, or `const data = resolve.data`.
 		const { nfts, totalCount } = await getNfts(address);
 		console.log("NFTS", nfts, "TOTAL COUNT", totalCount);
 		setNfts(nfts);
 		setTotalCount(totalCount);
 	}, [address]);
+
+	useEffect(() => {
+		getNftsToDisplay();
+	}, [nfts]);
 
 	const handleSearch = (address, celebrity) => {
 		setAddress(address);
@@ -63,8 +84,11 @@ const GalleryPage = () => {
 						)}
 					</div>
 					<section className="gallery__gallery">
-						{nfts && (
-							<NftList nfts={nfts} totalCount={totalCount} />
+						{displayedNfts && (
+							<NftList
+								nfts={displayedNfts}
+								totalCount={totalCount}
+							/>
 						)}
 						<ScrollUpButton />
 					</section>

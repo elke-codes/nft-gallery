@@ -10,6 +10,11 @@
 		line-height: 3;
 		font-size: 1.25rem;
 	}
+	&__copy-email {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 
 	&__button {
 		margin: 2rem;

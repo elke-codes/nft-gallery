@@ -1,4 +1,8 @@
 // batch takes an array, a total number, and a batch size and returns us the next batch in the array.
+
+import { useState } from "react";
+import { getNfts } from "./getNfts";
+
 // @param batchOpts: {batchSize: number, array: [], currentIndex: number}
 export const batch = (batchOpts) => {
 	// using batchOpts.array, batchOpts.currentIndex, and batchOpts.batchSize, you need to
@@ -11,7 +15,23 @@ export const batch = (batchOpts) => {
 	// otherwise you will be returning undefined stuff.
 
 	// if i pass in an array of 3 elements, and i say i want 20, i can just do
-	return batchOpts.array;
+	// const nfts = getNfts(address);
+
+	const batchOpts = {
+		array,
+		currentIndex,
+		batchSize: 20
+	};
+
+	// const [array, setArray] = useState([nfts]);
+	// const [currentIndex, setCurrentIndex] = useState(0);
+
+	if (array.length >= 20) {
+		array.splice(currentIndex, batchSize);
+		setCurrentIndex(currentIndex + batchSize);
+	} else {
+		return batchOpts.array;
+	}
 };
 
 const nfts = getFromMoralis();

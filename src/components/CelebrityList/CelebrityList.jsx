@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import celebrityData from "../../data/celebrities.json";
 import "./CelebrityList.scss";
+import { v4 as uuid } from "uuid";
 
 const CelebrityList = (props) => {
 	const handleClick = (address, celebrity) => {
@@ -22,8 +23,8 @@ const CelebrityList = (props) => {
 			{celebrityData.map((celebrity) => {
 				return (
 					<Link
-						to={`gallery/eth/${celebrity.address}`}
-						// key={video.id}
+						to={`/gallery/eth/${celebrity.address}`}
+						key={uuid()}
 						className="celebrity__link"
 						onClick={() => {
 							handleClick(celebrity.address, celebrity.name);

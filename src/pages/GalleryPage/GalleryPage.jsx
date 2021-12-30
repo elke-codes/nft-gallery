@@ -8,7 +8,7 @@ import "./GalleryPage.scss";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 const GalleryPage = () => {
-	const [nfts, setNfts] = useState([]);
+	const [allNfts, setAllNfts] = useState([]);
 	const [totalCount, setTotalCount] = useState();
 	const [address, setAddress] = useState();
 	const [celebrity, setCelebrity] = useState();
@@ -18,12 +18,12 @@ const GalleryPage = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const getNftsToDisplay = () => {
-		if (!nfts.length) {
+		if (!allNfts.length) {
 			console.log("no length of all nfts, exiting early");
 			return;
 		}
 
-		const nextNfts = nfts.slice(currentIndex, batchSize);
+		const nextNfts = allNfts.slice(currentIndex, batchSize);
 		console.log("nextnfts", nextNfts);
 		console.log("displayedNfts1", displayedNfts);
 		setDisplayedNfts(displayedNfts.concat(nextNfts));
@@ -32,15 +32,17 @@ const GalleryPage = () => {
 	};
 
 	useEffect(async () => {
+		setCurrentIndex(0);
+		setDisplayedNfts([]);
 		const { nfts, totalCount } = await getNfts(address);
 		console.log("NFTS", nfts, "TOTAL COUNT", totalCount);
-		setNfts(nfts);
+		setAllNfts(nfts);
 		setTotalCount(totalCount);
 	}, [address]);
 
 	useEffect(() => {
 		getNftsToDisplay();
-	}, [nfts]);
+	}, [allNfts]);
 
 	const handleSearch = (address, celebrity) => {
 		setAddress(address);

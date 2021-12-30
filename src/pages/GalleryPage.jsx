@@ -5,6 +5,7 @@ import React, { Component, useEffect, useState } from "react";
 import { getNfts } from "../utils/getNfts";
 import CelebrityList from "../components/CelebrityList/CelebrityList";
 import "./GalleryPage.scss";
+import ScrollUpButton from "../components/ScrollUpButton/ScrollUpButton";
 
 const GalleryPage = () => {
 	const [nfts, setNfts] = useState([]);
@@ -46,6 +47,7 @@ const GalleryPage = () => {
 						{nfts && (
 							<NftList nfts={nfts} totalCount={totalCount} />
 						)}
+						<ScrollUpButton />
 					</section>
 				</div>
 			</main>

@@ -40,8 +40,27 @@ const GalleryPage = () => {
 					</div>
 					<div className="gallery__found-info">
 						{/* if current address  = a celebrity address : show "showing celebrity.name+'s collection" */}
-						{celebrity && <h2>{celebrity}'s Nft Collection</h2>}
-						{address && <p>ETH address: {address}</p>}
+						{celebrity && (
+							<h2 className="gallery__found-info-celebrity">
+								{celebrity}'s Nft Collection
+							</h2>
+						)}
+						{address && (
+							<>
+								<p>
+									<span className="gallery__found-info--bold">
+										ETH address:{" "}
+									</span>
+									{address}
+								</p>
+								<p>
+									<span className="gallery__found-info--bold">
+										Total NFT found on this ETH address:{" "}
+									</span>
+									{totalCount}
+								</p>
+							</>
+						)}
 					</div>
 					<section className="gallery__gallery">
 						{nfts && (

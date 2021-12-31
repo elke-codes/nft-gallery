@@ -1,5 +1,8 @@
+/// CELEBRITYLIST.SCSS ///
+
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 .celebrity {
 	// min-width: 30%;
@@ -19,7 +22,7 @@
 		width: 50%;
 		// width: fit-content;
 		padding: 0.5rem 1rem;
-		border-radius: 5px;
+		border-radius: $border-radius;
 		&:hover {
 			background-color: #a2c8ac;
 		}
@@ -32,7 +35,7 @@
 	&__image {
 		width: 7.5rem;
 		height: 3.75rem;
-		border-radius: 0.25rem;
+		border-radius: $border-radius;
 		padding-right: 2rem;
 	}
 }

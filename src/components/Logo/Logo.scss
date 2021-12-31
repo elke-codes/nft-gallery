@@ -1,3 +1,7 @@
+/// LOGO.SCSS ///
+
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap");
 
 .logo {
@@ -12,9 +16,13 @@
 	}
 
 	&__title {
-		padding-left: 1rem;
-		font-family: "Poppins", sans-serif;
-		text-decoration: underline;
-		color: black;
+		display: none;
+		@include tablet {
+			display: flex;
+			padding-left: 1rem;
+			font-family: "Poppins", sans-serif;
+			text-decoration: underline;
+			color: black;
+		}
 	}
 }

@@ -1,3 +1,5 @@
+/// FOOTER.JSX ///
+
 import React from "react";
 import "./Footer.scss";
 import GitHubLogo from "../../assets/icons/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png";

@@ -1,3 +1,5 @@
+/// CELEBRITYLIST.JSX ///
+
 import React from "react";
 import { Link } from "react-router-dom";
 import celebrityData from "../../data/celebrities.json";

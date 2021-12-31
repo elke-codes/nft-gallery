@@ -1,3 +1,5 @@
+/// NFTLIST.JSX ///
+
 import React from "react";
 import NftCard from "../NftCard/NftCard";
 import "./NftList.scss";

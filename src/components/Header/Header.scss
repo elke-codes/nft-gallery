@@ -1,14 +1,18 @@
+/// HEADER.SCSS ///
+@use "../../styles/partials/mixins" as *;
+
 .header {
 	// background: linear-gradient(45deg, rgb(209, 170, 184), rgb(200, 173, 163));
 	background-color: rgb(162, 200, 172);
+	// height: 10%;
+	position: fixed;
+	width: 100%;
+	z-index: 5;
 	padding: 1rem 2rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 10%;
-	position: fixed;
-	width: 100%;
-	z-index: 5;
+
 	&__nav-link {
 		margin-left: 2rem;
 		&:hover {

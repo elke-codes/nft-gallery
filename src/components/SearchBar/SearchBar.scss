@@ -1,3 +1,7 @@
+/// SEARCHBAR.SCSS ///
+
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 .search-form {
 	display: flex;
 	flex-direction: column;
@@ -11,54 +15,20 @@
 		padding: 1rem 0;
 		padding-left: 2rem;
 		height: 2rem;
-		border-radius: 5px;
+		border-radius: $border-radius;
 		margin: 1rem 0;
+		&:focus-visible {
+			outline-color: blue;
+		}
 	}
 
 	&__search-button {
 		// max-width: 30%;
 		// margin-left: 1rem;
-		height: 2rem;
-		border-radius: 5px;
-		background-color: #a2c8ac;
+		// height: 2rem;
+		// border-radius: 5px;
+		// background-color: #a2c8ac;
+		@include buttons;
+		color: white;
 	}
 }
-
-// .search {
-// 	background-image: url(../../assets/images/icons/search.svg);
-// 	background-repeat: no-repeat;
-// 	background-position: 0.5rem;
-// 	background-color: $alabaster;
-// 	padding: 1rem 0;
-// 	padding-left: 2rem;
-// 	height: 2.5rem;
-// 	border-radius: 4px;
-// 	border: 1px solid $secondary-text;
-// 	width: 80%;
-// 	margin-right: 7%;
-// 	@include body-copy;
-
-// 	@include tablet {
-// 		width: 100%;
-// 		/* margin: 0; */
-// 	}
-
-// 	@include desktop {
-// 		width: 20%;
-// 	}
-
-// 	&--active {
-// 		border-color: $action-hover;
-// 	}
-
-// 	&--error {
-// 		border-color: #d22d2d;
-// 	}
-// 	&--error-message {
-// 		color: #d22d2d;
-// 	}
-// 	//overwriting this default setting that seems to be applied on the "ouline"
-// 	&:focus-visible {
-// 		outline-color: $action-hover;
-// 	}
-// }

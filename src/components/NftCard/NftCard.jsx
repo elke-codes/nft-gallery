@@ -1,3 +1,5 @@
+/// NFTCARD.JSX ///
+
 import React from "react";
 import "./NftCard.scss";
 

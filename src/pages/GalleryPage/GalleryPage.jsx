@@ -1,3 +1,5 @@
+/// GALLERYPAGE.JSX ///
+
 import NftList from "../../components/NftList/NftList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 

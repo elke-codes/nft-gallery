@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import NftCard from "../NftCard/NftCard";
 import "./NftList.scss";
 import { v4 as uuid } from "uuid";
-import { useEffect } from "react/cjs/react.development";
 
 const NftList = (props) => {
-	// const [displayedNfts, setDisplayedNfts] = useState(props.displayedNfts);
-	// useEffect(() => {
-	// 	setDisplayedNfts(props.displayedNfts);
-	// }, [props.displayedNfts]);
-
 	return (
 		<>
 			{props.displayedNfts.length > 0 && (

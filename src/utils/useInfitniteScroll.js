@@ -1,3 +1,5 @@
+// // https://upmostly.com/tutorials/build-an-infinite-scroll-component-in-react-using-react-hooks
+
 import { useState, useEffect } from "react";
 
 const useInfiniteScroll = (callback) => {
@@ -6,6 +8,7 @@ const useInfiniteScroll = (callback) => {
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
 		console.log("eventlistnered added");
+		//remove the eventhandler when the component unmounts
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 			console.log("eventlistener removed");
@@ -27,8 +30,6 @@ const useInfiniteScroll = (callback) => {
 		) {
 			return;
 		}
-
-		console.log("handlescroll");
 		setIsFetching(true);
 	}
 

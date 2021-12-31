@@ -6,6 +6,7 @@ import { getNfts } from "../../utils/getNfts";
 import CelebrityList from "../../components/CelebrityList/CelebrityList";
 import "./GalleryPage.scss";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import useInfiniteScroll from "../../utils/useInfitniteScroll";
 
 const GalleryPage = () => {
 	const handleSearch = (address, celebrity) => {
@@ -32,6 +33,8 @@ const GalleryPage = () => {
 		setIsFetching(false);
 	};
 
+	const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
+
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
 	useEffect(async () => {
 		//when the address changes, reset the current index and displayednfts
@@ -48,33 +51,6 @@ const GalleryPage = () => {
 	useEffect(() => {
 		getNftsToDisplay();
 	}, [allNfts]);
-
-	//INFITNITYSCROLLL
-	// https://upmostly.com/tutorials/build-an-infinite-scroll-component-in-react-using-react-hooks
-	const [isFetching, setIsFetching] = useState(false);
-
-	useEffect(() => {
-		window.addEventListener("scroll", handleScroll);
-		console.log("eventlistener added");
-		return () => {
-			console.log("eventlistener removed");
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
-
-	function handleScroll() {
-		if (
-			window.innerHeight + document.documentElement.scrollTop !==
-			document.documentElement.offsetHeight
-		)
-			return;
-		setIsFetching(true);
-	}
-
-	useEffect(() => {
-		if (!isFetching) return;
-		getNftsToDisplay();
-	}, [isFetching]);
 
 	return (
 		<>
@@ -112,11 +88,7 @@ const GalleryPage = () => {
 					</div>
 					<section className="gallery__gallery">
 						{displayedNfts && (
-							<NftList
-								displayedNfts={displayedNfts}
-								totalCount={totalCount}
-								getNftsToDisplay={getNftsToDisplay}
-							/>
+							<NftList displayedNfts={displayedNfts} />
 						)}
 						<ScrollUpButton />
 					</section>

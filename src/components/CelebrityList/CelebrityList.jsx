@@ -17,7 +17,7 @@ const CelebrityList = (props) => {
 	return (
 		<article className="celebrity">
 			<h2 className="celebrity__title">
-				Check out these celebrities' NFT collection
+				Check out these celebrities' NFT collections
 			</h2>
 			{celebrityData.map((celebrity) => {
 				return (

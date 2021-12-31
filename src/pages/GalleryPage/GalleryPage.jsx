@@ -7,6 +7,7 @@ import CelebrityList from "../../components/CelebrityList/CelebrityList";
 import "./GalleryPage.scss";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import useInfiniteScroll from "../../utils/useInfitniteScroll";
+import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton";
 
 const GalleryPage = () => {
 	const handleSearch = (address, celebrity) => {
@@ -91,6 +92,7 @@ const GalleryPage = () => {
 							<NftList displayedNfts={displayedNfts} />
 						)}
 						<ScrollUpButton />
+						<ScrollDownButton />
 					</section>
 				</div>
 			</main>

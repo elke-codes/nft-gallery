@@ -8,6 +8,10 @@ import "./GalleryPage.scss";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 const GalleryPage = () => {
+	const handleSearch = (address, celebrity) => {
+		setAddress(address);
+		setCelebrity(celebrity);
+	};
 	const [allNfts, setAllNfts] = useState([]);
 	const [totalCount, setTotalCount] = useState();
 	const [address, setAddress] = useState();
@@ -22,21 +26,22 @@ const GalleryPage = () => {
 			console.log("no length of all nfts, exiting early");
 			return;
 		}
-
-		const nextNfts = allNfts.slice(currentIndex, batchSize);
-		console.log("nextnfts", nextNfts);
-		console.log("displayedNfts1", displayedNfts);
+		const nextNfts = allNfts.slice(currentIndex, currentIndex + batchSize);
 		setDisplayedNfts(displayedNfts.concat(nextNfts));
-		console.log("displayedNfts2", displayedNfts);
 		setCurrentIndex(currentIndex + batchSize);
+		setIsFetching(false);
 	};
 
+	//when the address changes, wait for the api call to resolve then use that data to start populating the component
 	useEffect(async () => {
+		//when the address changes, reset the current index and displayednfts
 		setCurrentIndex(0);
 		setDisplayedNfts([]);
+		//call the api to fetch the nfts for the current address
 		const { nfts, totalCount } = await getNfts(address);
-		console.log("NFTS", nfts, "TOTAL COUNT", totalCount);
+		//store all nfts fetched from the api in state
 		setAllNfts(nfts);
+
 		setTotalCount(totalCount);
 	}, [address]);
 
@@ -44,12 +49,32 @@ const GalleryPage = () => {
 		getNftsToDisplay();
 	}, [allNfts]);
 
-	const handleSearch = (address, celebrity) => {
-		setAddress(address);
-		setCelebrity(celebrity);
-	};
+	//INFITNITYSCROLLL
+	// https://upmostly.com/tutorials/build-an-infinite-scroll-component-in-react-using-react-hooks
+	const [isFetching, setIsFetching] = useState(false);
 
-	console.log("render");
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
+		console.log("eventlistener added");
+		return () => {
+			console.log("eventlistener removed");
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
+	function handleScroll() {
+		if (
+			window.innerHeight + document.documentElement.scrollTop !==
+			document.documentElement.offsetHeight
+		)
+			return;
+		setIsFetching(true);
+	}
+
+	useEffect(() => {
+		if (!isFetching) return;
+		getNftsToDisplay();
+	}, [isFetching]);
 
 	return (
 		<>
@@ -88,8 +113,9 @@ const GalleryPage = () => {
 					<section className="gallery__gallery">
 						{displayedNfts && (
 							<NftList
-								nfts={displayedNfts}
+								displayedNfts={displayedNfts}
 								totalCount={totalCount}
+								getNftsToDisplay={getNftsToDisplay}
 							/>
 						)}
 						<ScrollUpButton />

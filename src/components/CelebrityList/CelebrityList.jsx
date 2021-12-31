@@ -13,7 +13,6 @@ const CelebrityList = (props) => {
 			behavior: "smooth"
 		});
 	};
-	console.log("from celebritylist", celebrityData);
 
 	return (
 		<article className="celebrity">

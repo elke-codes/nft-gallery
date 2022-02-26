@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Header.scss";
 
@@ -7,6 +7,7 @@ const Header = () => {
 	return (
 		<header className="header">
 			<Logo />
+
 			<nav className="header__nav">
 				<Link to="/" className="header__nav-link">
 					Home

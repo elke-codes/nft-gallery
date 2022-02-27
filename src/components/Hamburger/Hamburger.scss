@@ -1,0 +1,8 @@
+/// --- HAMBBURGER.SCSS ---///
+@use "../../styles/partials/mixins" as *;
+
+.hamburger {
+	@include tablet {
+		display: none;
+	}
+}

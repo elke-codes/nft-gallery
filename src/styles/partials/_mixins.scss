@@ -1,3 +1,27 @@
+/// --- MIXINS SCSS --- ///
+
+@use "./variables" as *;
+
+// MEDIA QUERIES //
+
+@mixin big-mobile {
+	@media screen and (min-width: 677px) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media screen and (min-width: $tablet-breakpoint) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media screen and (min-width: $desktop-breakpoint) {
+		@content;
+	}
+}
+
 @mixin padding-sections {
 	padding: 2rem;
 	// @include tablet {

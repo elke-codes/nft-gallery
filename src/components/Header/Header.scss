@@ -9,23 +9,24 @@
 	align-items: center;
 	height: 10%;
 	position: fixed;
-	width: 100%;
+	width: 100vw;
 	z-index: 5;
 
 	&__nav-link {
-		margin-left: 2rem;
+		margin-left: 1rem;
+		@include tablet {
+			margin-left: 2rem;
+		}
 
 		&--active {
-			@include tablet {
-				display: none;
-				text-decoration: underline;
-			}
+			text-decoration: underline;
+			// @include tablet {
+			// 	display: none;
+			// 	text-decoration: underline;
+			// }
 		}
 		&:hover {
 			border-bottom: 1px solid black;
 		}
-	}
-
-	&__burger-nav-link {
 	}
 }

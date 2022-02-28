@@ -5,14 +5,15 @@
 .gallery {
 	padding-top: 7%;
 	display: flex;
+	justify-content: center;
 	// background: linear-gradient(#a2c8ac, #caaca3);
 	// height: 100vh;
 	// &__search-container {
 	// 	display: flex;
 	// }
-	&__celebrities {
-		width: 20%;
-	}
+	// &__celebrities {
+	// 	width: 20%;
+	// }
 	&__main-container {
 		width: 69%;
 		display: flex;
@@ -25,10 +26,11 @@
 
 	&__found-info {
 		padding-bottom: 1rem;
+		width: 100%;
+		word-break: break-word;
 
 		&--bold {
 			font-weight: bold;
-			word-break: break-word;
 		}
 	}
 

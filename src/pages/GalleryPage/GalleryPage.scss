@@ -1,7 +1,12 @@
+/// --- GALLERYPAGE.SCSS --- ///
+
+@use "../../styles/partials/mixins" as *;
+
 .gallery {
 	padding-top: 7%;
 	display: flex;
-	background: linear-gradient(#a2c8ac, #caaca3);
+	// background: linear-gradient(#a2c8ac, #caaca3);
+	// height: 100vh;
 	// &__search-container {
 	// 	display: flex;
 	// }
@@ -9,11 +14,13 @@
 		width: 20%;
 	}
 	&__main-container {
-		margin-left: 3rem;
 		width: 69%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		@include tablet {
+			margin-left: 3rem;
+		}
 	}
 
 	&__found-info {
@@ -21,6 +28,7 @@
 
 		&--bold {
 			font-weight: bold;
+			word-break: break-word;
 		}
 	}
 

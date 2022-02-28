@@ -14,16 +14,17 @@
 
 	&__nav-link {
 		margin-left: 1rem;
+
 		@include tablet {
 			margin-left: 2rem;
 		}
 
 		&--active {
-			text-decoration: underline;
-			// @include tablet {
-			// 	display: none;
-			// 	text-decoration: underline;
-			// }
+			display: none;
+			@include tablet {
+				display: flex;
+				text-decoration: underline;
+			}
 		}
 		&:hover {
 			border-bottom: 1px solid black;

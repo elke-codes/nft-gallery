@@ -6,6 +6,10 @@
 	// max-width: 30%;
 	margin-top: 6rem;
 	@include padding-sections;
+	display: none;
+	@include tablet {
+		display: flex;
+	}
 
 	&__link {
 		text-decoration: none;

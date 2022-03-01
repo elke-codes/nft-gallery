@@ -6,7 +6,7 @@ const HomePage = () => {
 	return (
 		<main>
 			<section className="homepage">
-				<h2>Welcome to my NFT Gallery!</h2>
+				<h2 className="homepage__title">Welcome to my NFT Gallery!</h2>
 				<p className="homepage__copy">
 					The idea is simple: enter an ETHEREUM address and see which
 					NFT's that wallet holds.

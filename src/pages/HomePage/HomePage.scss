@@ -1,14 +1,33 @@
+/// --- HOMEPAGE.SCSS --- ///
+
+@use "../../styles/partials/mixins" as *;
+
 .homepage {
-	padding: 3rem 0;
-	padding-top: 7%;
+	padding: 0 1rem;
+	padding-top: 40%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background: linear-gradient(45deg, #a2c8ac, #caaca3);
-	height: 85vh;
+	justify-content: center;
+	@include tablet {
+		padding: 3rem 0;
+		padding-top: 7%;
+	}
+
+	&__title {
+		font-size: 1.2rem;
+		@include tablet {
+			font-size: initial;
+		}
+	}
 	&__copy {
-		line-height: 3;
-		font-size: 1.25rem;
+		line-height: 2;
+		font-size: 1rem;
+		@include tablet {
+			line-height: 3;
+			font-size: 1.25rem;
+		}
 	}
 	&__copy-email {
 		&:hover {

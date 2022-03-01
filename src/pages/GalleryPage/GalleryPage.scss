@@ -3,7 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .gallery {
-	padding-top: 7%;
+	padding-top: 40%;
 	display: flex;
 	justify-content: center;
 	// background: linear-gradient(#a2c8ac, #caaca3);
@@ -14,6 +14,9 @@
 	// &__celebrities {
 	// 	width: 20%;
 	// }
+	@include tablet {
+		padding-top: 40%;
+	}
 	&__main-container {
 		width: 69%;
 		display: flex;

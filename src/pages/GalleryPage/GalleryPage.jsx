@@ -72,18 +72,15 @@ const GalleryPage = () => {
 						)}
 						{address && (
 							<>
-								<p>
-									<span className="gallery__found-info--bold">
-										ETH address:{" "}
-									</span>
-									{address}
+								<p className="gallery__found-info--bold">
+									ETH address:{" "}
 								</p>
-								<p>
-									<span className="gallery__found-info--bold">
-										Total NFT found on this ETH address:{" "}
-									</span>
-									{totalCount}
+								<p> {address}</p>
+								<p className="gallery__found-info--bold">
+									Total NFT found on this ETH address:{" "}
 								</p>
+
+								<p> {totalCount}</p>
 							</>
 						)}
 					</div>

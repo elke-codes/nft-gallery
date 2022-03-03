@@ -5,7 +5,7 @@ import GitHubLogo from "../../assets/icons/GitHub-Mark/PNG/GitHub-Mark-Light-32p
 const Footer = () => {
 	return (
 		<footer className="footer">
-			<p className="footer__name">A project by Elke Dick</p>
+			{/* <p className="footer__name">A project by Elke Dick</p> */}
 			<ul className="footer__list">
 				<li className="footer__list-item">
 					<a
@@ -16,7 +16,7 @@ const Footer = () => {
 						<img src={GitHubLogo} alt="GitHub Logo" />
 					</a>
 				</li>
-				<li className="footer__list-item">
+				{/* <li className="footer__list-item">
 					<a
 						href="mailto:elke.codes@gmail.com"
 						target="_blank"
@@ -25,7 +25,7 @@ const Footer = () => {
 						className="footer__link-email">
 						📨
 					</a>
-				</li>
+				</li> */}
 			</ul>
 		</footer>
 	);

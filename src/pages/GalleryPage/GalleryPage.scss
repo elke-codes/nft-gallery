@@ -3,9 +3,14 @@
 @use "../../styles/partials/mixins" as *;
 
 .gallery {
-	padding-top: 40%;
+	padding-top: 25%;
+	padding-bottom: 50%;
 	display: flex;
 	justify-content: center;
+	@include tablet {
+		padding-top: 40%;
+	}
+
 	// background: linear-gradient(#a2c8ac, #caaca3);
 	// height: 100vh;
 	// &__search-container {
@@ -31,16 +36,24 @@
 		padding-bottom: 1rem;
 		width: 100%;
 		word-break: break-word;
-
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		&--bold {
 			font-weight: bold;
+			font-size: 0.75rem;
+			padding: 0.5rem 0;
 		}
 	}
 
 	&__found-info-celebrity {
-		margin-top: 4rem;
-		font-size: 2rem;
+		font-size: 1rem;
+		@include tablet {
+			// margin-top: 4rem;
+			font-size: 2rem;
+		}
 	}
 	&__gallery {
+		// height: 0;
 	}
 }

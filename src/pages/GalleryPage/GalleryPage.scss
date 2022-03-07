@@ -10,13 +10,10 @@
 		padding: 2rem 0;
 	}
 	&__main-container {
-		width: 69%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		@include tablet {
-			margin-left: 3rem;
-		}
+		padding: 1rem;
 	}
 
 	&__found-info {

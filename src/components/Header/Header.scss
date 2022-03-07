@@ -12,8 +12,13 @@
 	width: 100%;
 	z-index: 5;
 
+	&__nav {
+		display: flex;
+	}
+
 	&__nav-link {
 		margin-left: 1rem;
+		padding: 0.2rem 0;
 
 		@include tablet {
 			margin-left: 2rem;
@@ -23,7 +28,9 @@
 			display: none;
 			@include tablet {
 				display: flex;
-				text-decoration: underline;
+
+				border-bottom: 1px solid black;
+				// text-decoration: underline;
 			}
 		}
 		&:hover {

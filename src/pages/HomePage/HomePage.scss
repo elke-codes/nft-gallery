@@ -4,15 +4,16 @@
 
 .homepage {
 	padding: 0 1rem;
-	padding-top: 40%;
+	// padding-top: 40%;
+	padding-top: 10%;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	// background: linear-gradient(45deg, #a2c8ac, #caaca3);
 	justify-content: center;
 	@include tablet {
-		padding: 3rem 0;
-		padding-top: 7%;
+		// padding: 3rem 0;
 	}
 
 	&__title {

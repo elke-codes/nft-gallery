@@ -68,7 +68,7 @@ const GalleryPage = () => {
 								</p>
 								<p> {address}</p>
 								<p className="gallery__found-info--bold">
-									Total NFT found on this ETH address:{" "}
+									Total NFT found on this address:{" "}
 								</p>
 
 								<p> {totalCount}</p>

@@ -1,7 +1,7 @@
 // Author: Mojtaba Seyedi
 // https://codepen.io/seyedi/pen/zYoeLEv
 @use "../../styles/partials/colors" as *;
-
+@use "../../styles/partials/mixins" as *;
 .card {
 	position: relative;
 	display: block;
@@ -15,7 +15,12 @@
 	background-color: #ffffff;
 	padding: 1rem;
 	min-width: 260px;
-	min-height: 500px;
+	width: 100%;
+	// min-height: 500px;
+	@include tablet {
+		width: 30%;
+		height: 600px;
+	}
 }
 
 .card__image {
@@ -98,14 +103,7 @@
 .card__description {
 	padding: 0 2em 2em;
 	margin: 0;
-	// color: #d7bdca;
 	color: black;
-	// font-family: "MockFlowFont";
-	// display: -webkit-box;
-	// -webkit-box-orient: vertical;
-	// -webkit-line-clamp: 3;
 	font-size: 0.75rem;
-	overflow: auto;
-	display: flex;
-	// height: min-content;
+	word-break: break-word;
 }

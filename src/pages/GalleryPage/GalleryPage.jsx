@@ -56,20 +56,11 @@ const GalleryPage = () => {
 	return (
 		<>
 			<main className="gallery">
-				<section className="gallery__celebrities">
-					<CelebrityList onSearch={handleSearch} />
-				</section>
 				<div className="gallery__main-container">
 					<div className="gallery__search-container">
 						<SearchBar onSearch={handleSearch} />
 					</div>
 					<div className="gallery__found-info">
-						{/* if current address  = a celebrity address : show "showing celebrity.name+'s collection" */}
-						{celebrity && (
-							<h2 className="gallery__found-info-celebrity">
-								{celebrity}'s Nft Collection
-							</h2>
-						)}
 						{address && (
 							<>
 								<p className="gallery__found-info--bold">

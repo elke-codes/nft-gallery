@@ -4,11 +4,14 @@
 .celebrity {
 	// min-width: 30%;
 	// max-width: 30%;
-	margin-top: 6rem;
-	@include padding-sections;
-	display: none;
+	// margin-top: 6rem;
+	// @include padding-sections;
+	// display: none;
+	padding: 0 1rem;
+	display: flex;
+	// flex-direction: column;
 	@include tablet {
-		display: flex;
+		padding: 0 2rem;
 	}
 
 	&__link {

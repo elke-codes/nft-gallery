@@ -4,6 +4,7 @@ import "./NftList.scss";
 import { v4 as uuid } from "uuid";
 
 const NftList = (props) => {
+	console.log("nftlist props", props);
 	return (
 		<>
 			{props.displayedNfts.length > 0 && (

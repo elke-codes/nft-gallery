@@ -4,6 +4,7 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
+import CelebrityPage from "./pages/CelebrityPage/CelebrityPage";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 						component={GalleryPage}
 					/>
 					<Route path="/gallery" component={GalleryPage} />
+					<Route path="/celebrities" component={CelebrityPage} />
 					<Route path="/" exact component={HomePage}></Route>
 				</Switch>
 			</div>

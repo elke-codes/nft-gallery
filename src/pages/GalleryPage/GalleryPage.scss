@@ -3,24 +3,11 @@
 @use "../../styles/partials/mixins" as *;
 
 .gallery {
-	padding-top: 25%;
-	padding-bottom: 50%;
 	display: flex;
 	justify-content: center;
+	padding: 1rem 0;
 	@include tablet {
-		padding-top: 40%;
-	}
-
-	// background: linear-gradient(#a2c8ac, #caaca3);
-	// height: 100vh;
-	// &__search-container {
-	// 	display: flex;
-	// }
-	// &__celebrities {
-	// 	width: 20%;
-	// }
-	@include tablet {
-		padding-top: 40%;
+		padding: 2rem 0;
 	}
 	&__main-container {
 		width: 69%;

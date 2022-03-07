@@ -42,6 +42,12 @@ const Header = () => {
 					ETH Gallery
 				</NavLink>
 				<NavLink
+					to="/celebrities"
+					className="header__nav-link"
+					activeClassName="header__nav-link--active">
+					Celebrities
+				</NavLink>
+				<NavLink
 					to="/login"
 					className="header__nav-link"
 					activeClassName="header__nav-link--active">

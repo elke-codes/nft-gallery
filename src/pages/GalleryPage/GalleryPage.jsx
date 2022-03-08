@@ -13,6 +13,7 @@ const GalleryPage = () => {
 	const handleSearch = (address, celebrity) => {
 		setAddress(address);
 		setCelebrity(celebrity);
+		setLoading(true);
 	};
 	const [allNfts, setAllNfts] = useState([]);
 	const [totalCount, setTotalCount] = useState();
@@ -22,7 +23,7 @@ const GalleryPage = () => {
 	const [displayedNfts, setDisplayedNfts] = useState([]);
 	const batchSize = 20;
 	const [currentIndex, setCurrentIndex] = useState(0);
-
+	const [loading, setLoading] = useState(false);
 	const getNftsToDisplay = () => {
 		if (!allNfts.length) {
 			console.log("no length of all nfts, exiting early");
@@ -38,6 +39,8 @@ const GalleryPage = () => {
 
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
 	useEffect(async () => {
+		console.log("address changed");
+		if (!address) return;
 		//when the address changes, reset the current index and displayednfts
 		setCurrentIndex(0);
 		setDisplayedNfts([]);
@@ -45,7 +48,7 @@ const GalleryPage = () => {
 		const { nfts, totalCount } = await getNfts(address);
 		//store all nfts fetched from the api in state
 		setAllNfts(nfts);
-
+		setLoading(false);
 		setTotalCount(totalCount);
 	}, [address]);
 
@@ -60,8 +63,10 @@ const GalleryPage = () => {
 					<div className="gallery__search-container">
 						<SearchBar onSearch={handleSearch} />
 					</div>
+					{loading && <p>Loading NFT's ...</p>}
+
 					<div className="gallery__found-info">
-						{address && (
+						{!loading && address && (
 							<>
 								<p className="gallery__found-info--bold">
 									ETH address:{" "}

@@ -52,11 +52,14 @@ const CelebrityPage = () => {
 
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
 	useEffect(async () => {
+		//avoid api call on page load
+		if (!address) return;
 		//when the address changes, reset the current index and displayednfts
 		setCurrentIndex(0);
 		setDisplayedNfts([]);
 		//call the api to fetch the nfts for the current address
 		const { nfts, totalCount } = await getNfts(address);
+		console.log("got all nfts");
 		//store all nfts fetched from the api in state
 		setAllNfts(nfts);
 		setLoading(false);

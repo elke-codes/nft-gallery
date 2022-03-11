@@ -11,9 +11,7 @@ const ScrollDownButton = () => {
 	};
 	return (
 		<button className="scroll-down-button" onClick={handleClick}>
-			<a href="#header" className="scroll-down-button__text">
-				&#8964;
-			</a>
+			<p className="scroll-down-button__text">&#8964;</p>
 		</button>
 	);
 };

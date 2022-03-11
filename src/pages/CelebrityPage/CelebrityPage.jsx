@@ -7,7 +7,6 @@ import NftList from "../../components/NftList/NftList";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton";
 import celebrityData from "../../data/celebrities.json";
-
 import { Triangle } from "react-loader-spinner";
 
 const CelebrityPage = () => {

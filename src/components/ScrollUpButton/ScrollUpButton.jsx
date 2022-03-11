@@ -11,9 +11,7 @@ const ScrollUpButton = () => {
 	};
 	return (
 		<button className="scroll-up-button" onClick={handleClick}>
-			<a href="#header" className="scroll-up-button__text">
-				&#8963;
-			</a>
+			<p className="scroll-up-button__text">&#8963;</p>
 		</button>
 	);
 };

@@ -94,11 +94,3 @@ it("should transform a http url that starts with https://gateway.pinata.cloud/",
 	const expected = IPFS_GATEWAY_PREFIX + "ipfs/" + "12345";
 	expect(transformed).toBe(expected);
 });
-
-it("should transform a http url that starts with http", () => {
-	const url = "http://gateway.pinata.cloud/ipfs/12345";
-
-	const transformed = transformMetadataUri(url);
-	const expected = IPFS_GATEWAY_PREFIX + "ipfs/" + "12345";
-	expect(transformed).toBe(expected);
-});

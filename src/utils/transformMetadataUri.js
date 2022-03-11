@@ -1,6 +1,5 @@
 export const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
 export const transformMetadataUri = (metadataUri, id) => {
-	metadataUri = metadataUri.replace("http://", "https://");
 	if (!metadataUri.includes("ipfs")) {
 		metadataUri = metadataUri.replace("0x{id}", id);
 		metadataUri = metadataUri.replace("{id}", id);

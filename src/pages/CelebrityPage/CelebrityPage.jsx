@@ -8,6 +8,8 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton";
 import celebrityData from "../../data/celebrities.json";
 
+import { Triangle } from "react-loader-spinner";
+
 const CelebrityPage = () => {
 	// const handleSearch = (e) => {
 	// 	e.preventDefault();
@@ -105,7 +107,18 @@ const CelebrityPage = () => {
 					{totalCount !== 0 && (
 						<p>{totalCount} NFT's found on this address.</p>
 					)}
-					{loading && <p>Loading NFT's ...</p>}
+					{loading && (
+						<>
+							<Triangle
+								type="Triangle"
+								color="black"
+								height={80}
+								width={80}
+							/>
+
+							<p>Loading NFT's ...</p>
+						</>
+					)}
 
 					<article className="gallery__gallery">
 						{celebrity !== "select" && displayedNfts && (

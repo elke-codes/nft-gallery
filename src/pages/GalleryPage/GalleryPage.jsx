@@ -8,6 +8,7 @@ import "./GalleryPage.scss";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import useInfiniteScroll from "../../utils/useInfitniteScroll";
 import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton";
+import { Grid, Triangle } from "react-loader-spinner";
 
 const GalleryPage = () => {
 	const handleSearch = (address, celebrity) => {
@@ -63,7 +64,18 @@ const GalleryPage = () => {
 					<div className="gallery__search-container">
 						<SearchBar onSearch={handleSearch} />
 					</div>
-					{loading && <p>Loading NFT's ...</p>}
+					{loading && (
+						<>
+							<Triangle
+								type="Triangle"
+								color="black"
+								height={80}
+								width={80}
+							/>
+
+							<p>Loading NFT's ...</p>
+						</>
+					)}
 
 					<div className="gallery__found-info">
 						{!loading && address && (

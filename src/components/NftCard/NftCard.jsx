@@ -8,7 +8,15 @@ const NftCard = (props) => {
 				<h2 className="card__collection-name">
 					{props.nft.name ? props.nft.name : null}
 				</h2>
-				<img src={props.nft.imageSrc} className="card__image" alt="" />
+				<img
+					src={props.nft.imageSrc}
+					className="card__image"
+					alt={
+						props.nft.metadata && props.nft.metadata.name
+							? props.nft.metadata.name
+							: null
+					}
+				/>
 				<div className="card__overlay">
 					<div className="card__header">
 						<svg
@@ -21,8 +29,8 @@ const NftCard = (props) => {
 								{props.nft.metadata && props.nft.metadata.name
 									? props.nft.metadata.name
 									: null}
-								<span> &#8964;</span>
 							</h3>
+							<p> &#8964;</p>
 						</div>
 					</div>
 					<p className="card__description">

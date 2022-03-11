@@ -56,6 +56,13 @@
 	transition: 0.2s ease-in-out;
 }
 
+.card__header-text {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
 .card__arc {
 	width: 80px;
 	height: 80px;
@@ -85,6 +92,8 @@
 	font-size: 1em;
 	margin: 0 0 0.3em;
 	color: #6a515e;
+	// display: flex;
+	// align-items: flex-end;
 }
 
 .card__tagline {

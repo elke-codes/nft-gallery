@@ -1,9 +1,13 @@
 import axios from "axios";
 import { transformMetadataUri } from "./transformMetadataUri";
 import { transformTokenUri } from "./transformTokenUri";
+import cantload from "../../src/assets/images/cantload.png";
 const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
-
+// TODO pass in cursor
+// return cursor
+// if cursor load next page
 export const getNfts = async (address) => {
+	console.log("get nfts", address);
 	try {
 		const data = await axios.get(
 			`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal`,
@@ -14,13 +18,15 @@ export const getNfts = async (address) => {
 				}
 			}
 		);
+
+		console.log("Data", data);
 		// reliably return an array from this function
 		const nfts = await Promise.all(
 			(data.data.result || []).map(async (nft) => {
 				// console.log("in loop", nft);
 				let metadata;
 				// if the nft response from moralis contains valid metadata,
-				// we can ue that directly, they parsed it for us.
+				// we can use that directly, they parsed it for us.
 				if (nft.metadata) {
 					metadata = JSON.parse(nft.metadata);
 				} else {
@@ -32,9 +38,9 @@ export const getNfts = async (address) => {
 							timeout: 2 * 1000
 						});
 						metadata = resp.data;
-						console.log("got metadata from tokenuri", metadata);
+						// console.log("got metadata from tokenuri", metadata);
 					} catch (e) {
-						console.log("couldnt get metadata", e);
+						// console.log("couldnt get metadata", e);
 						metadata = undefined;
 					}
 				}
@@ -50,8 +56,8 @@ export const getNfts = async (address) => {
 						imageSrc = metadata.image;
 					}
 				} else {
-					console.log("using placeholder for", nft);
-					imageSrc = "https://plchldr.co/i/300x250";
+					// console.log("using placeholder for", nft);
+					imageSrc = cantload;
 				}
 
 				nft.metadata = metadata;
@@ -59,6 +65,8 @@ export const getNfts = async (address) => {
 				return nft;
 			})
 		);
+
+		console.log("length nfts", nfts.length);
 
 		return {
 			nfts,

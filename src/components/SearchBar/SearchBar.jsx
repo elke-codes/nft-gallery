@@ -5,7 +5,7 @@ const SearchBar = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		props.onSearch(e.target.searchInput.value);
-		console.log(e.target.searchInput.value);
+		// console.log(e.target.searchInput.value);
 		e.target.reset();
 	};
 

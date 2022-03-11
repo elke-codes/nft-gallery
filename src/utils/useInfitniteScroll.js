@@ -7,18 +7,18 @@ const useInfiniteScroll = (callback) => {
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
-		console.log("eventlistnered added");
+		// console.log("eventlistnered added");
 		//remove the eventhandler when the component unmounts
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
-			console.log("eventlistener removed");
+			// console.log("eventlistener removed");
 		};
 	}, []);
 
 	useEffect(() => {
 		if (!isFetching) return;
 		callback(() => {
-			console.log("called back");
+			// console.log("called back");
 		});
 	}, [isFetching]);
 

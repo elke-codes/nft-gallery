@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
 import CelebrityPage from "./pages/CelebrityPage/CelebrityPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 					/>
 					<Route path="/gallery" component={GalleryPage} />
 					<Route path="/celebrities" component={CelebrityPage} />
+					<Route path="/login" component={LoginPage} />
 					<Route path="/" exact component={HomePage}></Route>
 				</Switch>
 			</div>

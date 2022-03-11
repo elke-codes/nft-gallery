@@ -19,6 +19,7 @@ const CelebrityPage = () => {
 
 	const handleChange = (e) => {
 		e.preventDefault();
+		setTotalCount(0);
 		setCelebrity(e.target.value);
 		const celebrityAll = celebrityData.find((celebrity) => {
 			return celebrity.name === e.target.value;
@@ -39,7 +40,7 @@ const CelebrityPage = () => {
 	const [loading, setLoading] = useState(false);
 	const getNftsToDisplay = () => {
 		if (!allNfts.length) {
-			console.log("no length of all nfts, exiting early");
+			// console.log("no length of all nfts, exiting early");
 			return;
 		}
 		const nextNfts = allNfts.slice(currentIndex, currentIndex + batchSize);
@@ -101,6 +102,9 @@ const CelebrityPage = () => {
 							? "Select a celebrity from the list to see their gallery"
 							: `${celebrity}'s Nft Collection`}
 					</h2>
+					{totalCount !== 0 && (
+						<p>{totalCount} NFT's found on this address.</p>
+					)}
 					{loading && <p>Loading NFT's ...</p>}
 
 					<article className="gallery__gallery">

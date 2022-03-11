@@ -26,7 +26,7 @@ const GalleryPage = () => {
 	const [loading, setLoading] = useState(false);
 	const getNftsToDisplay = () => {
 		if (!allNfts.length) {
-			console.log("no length of all nfts, exiting early");
+			// console.log("no length of all nfts, exiting early");
 			return;
 		}
 		const nextNfts = allNfts.slice(currentIndex, currentIndex + batchSize);
@@ -39,7 +39,7 @@ const GalleryPage = () => {
 
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
 	useEffect(async () => {
-		console.log("address changed");
+		// console.log("address changed");
 		if (!address) return;
 		//when the address changes, reset the current index and displayednfts
 		setCurrentIndex(0);

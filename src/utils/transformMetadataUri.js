@@ -5,7 +5,7 @@ export const transformMetadataUri = (metadataUri, id) => {
 		metadataUri = metadataUri.replace("{id}", id);
 		return metadataUri;
 	}
-	metadataUri = metadataUri.replace("https://gateway.pinata.cloud/", "");
+	metadataUri = metadataUri.replace("https://gateway.pinata.cloud/ipfs/", "");
 	metadataUri = metadataUri.replace("https://ipfs.moralis.io/", "");
 	metadataUri = metadataUri.replace("/metadata.json", "");
 

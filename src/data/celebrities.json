@@ -54,5 +54,25 @@
 	{
 		"name": "Post Malone",
 		"address": "0xbea020c3bd417f30de4d6bd05b0ed310ac586cc0"
+	},
+	{
+		"name": "Steve Aoki",
+		"address": "0xe4bbcbff51e61d0d95fcc5016609ac8354b177c4"
+	},
+	{
+		"name": "Beeple",
+		"address": "0xc6b0562605d35ee710138402b878ffe6f2e23807"
+	},
+	{
+		"name": "Kevin Hart",
+		"address": "0xbbdac7ba85af15420afd1f4aa3313c3535b15cde"
+	},
+	{
+		"name": "Paris Hilton",
+		"address": "0xb6aa5a1aa37a4195725cdf1576dc741d359b56bd"
+	},
+	{
+		"name": "Juston Bieber",
+		"address": "0xe21dc18513e3e68a52f9fcdacfd56948d43a11c6"
 	}
 ]

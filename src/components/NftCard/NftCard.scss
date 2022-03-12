@@ -1,7 +1,12 @@
+/// --- NFTCARD.SCSS --- ///
+
+// basic styling cards adapted from :
 // Author: Mojtaba Seyedi
-// https://codepen.io/seyedi/pen/zYoeLEv
+// https://codepen.io/seyedi/pen/zYoeLEv\
+
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
+
 .card {
 	position: relative;
 	display: block;
@@ -20,6 +25,16 @@
 	@include tablet {
 		width: 20%;
 		height: 600px;
+	}
+
+	&__button-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__button {
+		@include button-standard;
+		margin-bottom: 1rem;
 	}
 }
 

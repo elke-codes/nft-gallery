@@ -31,3 +31,22 @@
 	// 	padding-left: 7rem;
 	// }
 }
+
+@mixin border-radius {
+	border-radius: 15px;
+}
+
+@mixin button-standard {
+	@include border-radius;
+	padding: 1rem;
+	height: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(162, 200, 172, 0.5);
+	box-shadow: 0px 2px 2px rgb(0 0 0 / 20%);
+	border: 2px solid #82b58f;
+	&:hover {
+		background-color: rgba(162, 200, 172);
+	}
+}

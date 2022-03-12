@@ -1,4 +1,6 @@
 /// --- LOGINGPAGE.SCSS --- ///
+@use "../../styles/partials/mixins" as *;
+
 .login {
 	padding-top: 10%;
 	display: flex;
@@ -10,11 +12,12 @@
 	}
 
 	&__button {
-		margin: 2rem;
-		background-color: #a2c8ac;
-		padding: 1rem;
-		font-size: 1rem;
-		border-radius: 10%;
-		border: none;
+		@include button-standard;
+		// margin: 2rem;
+		// background-color: #a2c8ac;
+		// padding: 1rem;
+		// font-size: 1rem;
+		// @include border-radius;
+		// border: none;
 	}
 }

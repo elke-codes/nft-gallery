@@ -36,10 +36,6 @@
 		"address": "0x8d3bc45d7b30013c37c141f6ce7c981b2613efaa"
 	},
 	{
-		"name": "Shaquille O'Neal",
-		"address": "0x3c6aeff92b4b35c2e1b196b57d0f8ffb56884a17"
-	},
-	{
 		"name": "Ellijah Wood",
 		"address": "0xf6de94be96f80602d90bf29bd9e88a0e843b2eb9"
 	},
@@ -74,5 +70,165 @@
 	{
 		"name": "Juston Bieber",
 		"address": "0xe21dc18513e3e68a52f9fcdacfd56948d43a11c6"
+	},
+	{
+		"name": "cyberhosey",
+		"address": "0x02E725B7e99091Bd4cCBf15228384e160eCdf78f"
+	},
+	{
+		"name": "Logan Paul",
+		"address": "0xff0bd4aa3496739d5667adc10e2b843dfab5712b"
+	},
+	{
+		"name": "Marshmello",
+		"address": "0xa0eaf6b0df87132c9a28e450a43c1d906defb60b"
+	},
+	{
+		"name": "Vitalik Buterin",
+		"address": "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+	},
+	{
+		"name": "Lil Baby",
+		"address": "0xc86b12d850fdbbf3260a7baae862f85857aadbba"
+	},
+	{
+		"name": "Shaquille O'Neal",
+		"address": "0x3c6aeff92b4b35c2e1b196b57d0f8ffb56884a17"
+	},
+	{
+		"name": "LaMelo Ball",
+		"address": "0xc1064e3662b0718357e9050694a3bfeaabede8ab"
+	},
+	{
+		"name": "Eminem",
+		"address": "0x7a253bd170e3a8c6088acdc912dc34f945f33d4e"
+	},
+	{
+		"name": "Gwyneth Paltrow",
+		"address": "0x31185f782a7c11044566d70dfcf1c8175486f451"
+	},
+	{
+		"name": "Neymar Jr",
+		"address": "0xb4c27f85d7659e0cf72f479693c564e61472cb57"
+	},
+	{
+		"name": "The Chainsmokers",
+		"address": "0xee81a1bc1034b0906b132c98bed477b896b731da"
+	},
+	{
+		"name": "Gunna",
+		"address": "0xd99d96fd90cf9f52f8ad96d252ded0ec77f3d239"
+	},
+	{
+		"name": "FaZe Banks OpenSea",
+		"address": "0x7d4823262bd2c6e4fa78872f2587dda2a65828ed"
+	},
+	{
+		"name": "FaZe Banks Vault",
+		"address": "0x1d00ff1416cf4ed1ceaae24bfddf8e4997bc3507"
+	},
+	{
+		"name": "Lil Durk",
+		"address": "0x1ffead999b467249afd2efba336a0b6c820e17ac"
+	},
+	{
+		"name": "GaryVee",
+		"address": "0xd6a984153acb6c9e2d788f08c2465a1358bb89a7"
+	},
+	{
+		"name": "Travis Barker",
+		"address": "0x2e0fd2ddda2d582af5285c60be36047a7586bc69"
+	},
+	{
+		"name": "Future",
+		"address": "0x1616b4c7cdb4093befbcca62f3198993327a8e9e"
+	},
+	{
+		"name": "Alexis Ohanian",
+		"address": "0x1616b4c7cdb4093befbcca62f3198993327a8e9e"
+	},
+	{
+		"name": "Von Miller",
+		"address": "0x8c2b143b0276bafd2613bb41d7058583cf6706c7"
+	},
+	{
+		"name": "Drake Bell",
+		"address": "0xb432005e1010492fa315b9737881e5e18925204c"
+	},
+	{
+		"name": "Adam Draper",
+		"address": "0xd4402526d907f377f68fa935ef89bf6b8f8844bf"
+	},
+	{
+		"name": "DJ Khaled",
+		"address": "0xa0ac662f58d3507a6f4a37f8532df201d9010fe7"
+	},
+	{
+		"name": "Martin Garrix",
+		"address": "0x3a8db289e94465181e54353571fa7880857c0d87"
+	},
+	{
+		"name": "Daniel Maegaard",
+		"address": "0x51787a2c56d710c68140bdadefd3a98bff96feb4"
+	},
+	{
+		"name": "Odell Beckham Jr",
+		"address": "0xd00cadb1a823de8fb52d070b04798dcaa81fd3cb"
+	},
+	{
+		"name": "Jason Derulo",
+		"address": "0x519636198b3c1b36806ab3c9b6919f675cfd70a0"
+	},
+	{
+		"name": "Hayden Adams",
+		"address": "0x11e4857bb9993a50c685a79afad4e6f65d518dda"
+	},
+	{
+		"name": "Jordan Belfort",
+		"address": "0xdbf2445e5049c04cda797dae60ac885e7d79df9d"
+	},
+	{
+		"name": "Shawn Yue",
+		"address": "0x279679e6b44ec547c6e0466e5efd7d47ef3a400f"
+	},
+	{
+		"name": "KSI",
+		"address": "0x87badfcc6b5eb79acbd108d1208d82dc6a6d48ab"
+	},
+	{
+		"name": "Trey Songz",
+		"address": "0x7b775927fd637b3a53d0ee9e85321005666f3d49"
+	},
+	{
+		"name": "LaurDIY",
+		"address": "0xe69fd2b53837cc886ce555ada40e39ca721e21ae"
+	},
+	{
+		"name": "Mario Bautista",
+		"address": "0x37155a07824486e56a0387e35835e4f14a2d429d"
+	},
+	{
+		"name": "Tyrese Haliburton",
+		"address": "0xadadfa4213cb8baaad1abe99c8a863a4d0a94cc5"
+	},
+	{
+		"name": "Brian Armstrong",
+		"address": "0x5b76f5b8fc9d700624f78208132f91ad4e61a1f0"
+	},
+	{
+		"name": "Dez Bryant",
+		"address": "0xa4a8d44646e2f4c4a74b892303a13c85fb876338"
+	},
+	{
+		"name": "Jake Paul",
+		"address": "0xfc811061134fa6ccfd22f56cc91bf6450bea2d01"
+	},
+	{
+		"name": "Rich the Kid",
+		"address": "0xc255bbf72691f6363c7f96e475f48786e62de4c5"
+	},
+	{
+		"name": "Timbaland",
+		"address": "0xf39b47b20699ba41f1d3bfdd06a0d8a5f89cdd5c"
 	}
 ]

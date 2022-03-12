@@ -47,7 +47,7 @@ export const getNfts = async (address) => {
 
 				let imageSrc;
 				if (metadata && metadata.image) {
-					if (metadata.image.startsWith("ipfs://")) {
+					if (metadata.image.includes("ipfs")) {
 						imageSrc = transformMetadataUri(
 							metadata.image,
 							nft.token_id

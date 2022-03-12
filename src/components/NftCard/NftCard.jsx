@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./NftCard.scss";
 
 const NftCard = (props) => {
@@ -40,6 +41,15 @@ const NftCard = (props) => {
 							? props.nft.metadata.description
 							: "no description for this NFT"}
 					</p>
+					<div className="card__button-container">
+						<button className="card__button">
+							<a
+								href={`https://opensea.io/assets/${props.nft.token_address}/${props.nft.token_id}`}
+								target="_blank">
+								View on OpenSea
+							</a>
+						</button>
+					</div>
 				</div>
 			</li>
 		</>

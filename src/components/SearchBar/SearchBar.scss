@@ -1,3 +1,6 @@
+/// --- SEARCHBAR.SCSS --- ///
+@use "../../styles/partials/mixins" as *;
+
 .search-form {
 	display: flex;
 	flex-direction: column;
@@ -12,16 +15,13 @@
 		padding: 1rem 0;
 		padding-left: 2rem;
 		height: 2rem;
-		border-radius: 5px;
+		// border-radius: 5px;
+		@include border-radius;
 		margin: 1rem 0;
 	}
 
 	&__search-button {
-		// max-width: 30%;
-		// margin-left: 1rem;
-		height: 2rem;
-		border-radius: 5px;
-		background-color: #a2c8ac;
+		@include button-standard;
 	}
 }
 

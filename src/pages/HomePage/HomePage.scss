@@ -38,14 +38,14 @@
 	}
 
 	&__button {
-		margin: 2rem;
-		background-color: #a2c8ac;
-		padding: 1rem;
-		font-size: 1rem;
-		border-radius: 10%;
-		border: none;
-		&:hover {
-			background-color: #caaca3;
-		}
+		@include button-standard;
+		// margin: 2rem;
+		// background-color: #a2c8ac;
+		// padding: 1rem;
+		// font-size: 1rem;
+		// border: none;
+		// &:hover {
+		// 	background-color: #caaca3;
+		// }
 	}
 }

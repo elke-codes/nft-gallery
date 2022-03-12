@@ -38,7 +38,7 @@ export const getNfts = async (address) => {
 							timeout: 2 * 1000
 						});
 						metadata = resp.data;
-						// console.log("got metadata from tokenuri", metadata);
+						console.log("got metadata from tokenuri", metadata);
 					} catch (e) {
 						// console.log("couldnt get metadata", e);
 						metadata = undefined;

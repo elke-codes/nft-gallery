@@ -77,7 +77,7 @@ const CelebrityPage = () => {
 		<section className="celebrities">
 			{/* <CelebrityList onSearch={handleSearch} /> */}
 			<article className="celebrities__dropdown">
-				<h2>Check out these celebrities' NFT's</h2>
+				{!address && <h2>Check out these celebrities' NFT's</h2>}
 				<select
 					className="celebrities__select"
 					value={celebrity}
@@ -104,8 +104,14 @@ const CelebrityPage = () => {
 							: `${celebrity}'s Nft Collection`}
 					</h2>
 					{totalCount !== 0 && (
-						<p>{totalCount} NFT's found on this address.</p>
+						<p>{totalCount} NFT's found on ETH address:</p>
 					)}
+					{address && (
+						<>
+							<p>{address}</p>
+						</>
+					)}
+
 					{loading && (
 						<>
 							<Triangle

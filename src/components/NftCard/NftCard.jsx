@@ -5,8 +5,11 @@ const NftCard = (props) => {
 	return (
 		<>
 			<li className="card">
-				<h2 className="card__collection-name">
-					{props.nft.name ? props.nft.name : null}
+				<h2 className="card__title">
+					{" "}
+					{props.nft.metadata && props.nft.metadata.name
+						? props.nft.metadata.name
+						: null}
 				</h2>
 				<img
 					src={props.nft.imageSrc}
@@ -25,10 +28,8 @@ const NftCard = (props) => {
 							<path />
 						</svg>
 						<div className="card__header-text">
-							<h3 className="card__title">
-								{props.nft.metadata && props.nft.metadata.name
-									? props.nft.metadata.name
-									: null}
+							<h3 className="card__collection-name">
+								{props.nft.name ? props.nft.name : null}
 							</h3>
 							<p> &#8964;</p>
 						</div>

@@ -87,10 +87,30 @@ it("should transform a http url that has {id}", () => {
 	expect(transformed).toBe(expected);
 });
 
-it("should transform a http url that starts with https://gateway.pinata.cloud/", () => {
-	const url = "https://gateway.pinata.cloud/ipfs/12345";
+it("should transform a http url that has https: https:/cloudflare-ipfs.com/", () => {
+	const url = "https://ipfs.io/ipfs/https:/cloudflare-ipfs.com/12345";
 
 	const transformed = transformMetadataUri(url);
 	const expected = IPFS_GATEWAY_PREFIX + "ipfs/" + "12345";
+	expect(transformed).toBe(expected);
+});
+
+// it("should transform a http url that starts with https://gateway.pinata.cloud/", () => {
+// 	const url = "https://gateway.pinata.cloud/ipfs/12345";
+
+// 	const transformed = transformMetadataUri(url);
+// 	const expected = IPFS_GATEWAY_PREFIX + "ipfs/" + "12345";
+// 	expect(transformed).toBe(expected);
+// });
+
+it("should transform a http url that starts has pinata.cloud", () => {
+	const url =
+		"https://ipfs.io/ipfs/https://hornyhogs.mypinata.cloud/QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5B";
+
+	const transformed = transformMetadataUri(url);
+	const expected =
+		IPFS_GATEWAY_PREFIX +
+		"ipfs/" +
+		"QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5B";
 	expect(transformed).toBe(expected);
 });

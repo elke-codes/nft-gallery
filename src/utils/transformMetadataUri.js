@@ -15,12 +15,14 @@ export const transformMetadataUri = (metadataUri, id) => {
 		// metadataUri = IPFS_GATEWAY_PREFIX + id;
 		// return metadataUri;
 	}
-
+	metadataUri = metadataUri.replace(".ipfs.dweb.link/", "");
 	metadataUri = metadataUri.replace("https:/cloudflare-ipfs.com/", "");
+	metadataUri = metadataUri.replace("cloudflare-ipfs.com/", "");
 	metadataUri = metadataUri.replace("https://ipfs.moralis.io/", "");
 	metadataUri = metadataUri.replace("/metadata.json", "");
 	metadataUri = metadataUri.replace("https://ipfs.io/ipfs/", "");
 	metadataUri = metadataUri.replace("https://ipfs.io/", "");
+	metadataUri = metadataUri.replace("https://", "");
 	metadataUri = metadataUri.replace("ipfs/", "");
 	metadataUri = metadataUri.replace("ipfs://", "");
 	metadataUri = metadataUri.replace("0x{id}", id);

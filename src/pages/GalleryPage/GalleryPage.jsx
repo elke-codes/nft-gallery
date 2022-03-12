@@ -73,7 +73,7 @@ const GalleryPage = () => {
 								width={80}
 							/>
 
-							<p>Loading NFT's ...</p>
+							<p>Loading NFTs ...</p>
 						</>
 					)}
 

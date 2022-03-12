@@ -29,6 +29,17 @@ p {
 	margin: 0;
 }
 
+video {
+	width: 100%;
+}
+
+audio {
+	position: absolute;
+	bottom: 100px;
+	left: 0;
+	width: 100%;
+}
+
 .content-container {
 	min-height: 85vh;
 }

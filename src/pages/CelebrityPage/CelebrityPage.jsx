@@ -77,7 +77,7 @@ const CelebrityPage = () => {
 		<section className="celebrities">
 			{/* <CelebrityList onSearch={handleSearch} /> */}
 			<article className="celebrities__dropdown">
-				{!address && <h2>Check out these celebrities' NFT's</h2>}
+				{!address && <h2>Check out these celebrities' NFTs</h2>}
 				<select
 					className="celebrities__select"
 					value={celebrity}
@@ -121,7 +121,7 @@ const CelebrityPage = () => {
 								width={80}
 							/>
 
-							<p>Loading NFT's ...</p>
+							<p>Loading NFTs ...</p>
 						</>
 					)}
 

@@ -1,8 +1,42 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { transformMetadataUri } from "../../utils/transformMetadataUri";
 import "./NftCard.scss";
 
+const SOURCE_TYPE_IMAGE = "image";
+const SOURCE_TYPE_AUDIO = "audio";
+const SOURCE_TYPE_VIDEO = "video";
+const SOURCE_TYPE_3D = "3D";
+
 const NftCard = (props) => {
+	const [contentType, setContentType] = useState("");
+	const [sourceType, setSourceType] = useState("");
+
+	useEffect(async () => {
+		// we need to check if props.nft.metadata && props.nft.metadata.animation_url exist, and if they do, we actually want to check  THAT
+		// contentType INSTEAD of the image one.
+		const url =
+			props.nft.metadata && props.nft.metadata.animation_url
+				? transformMetadataUri(props.nft.metadata.animation_url)
+				: props.nft.imageSrc;
+
+		const resp = await axios.head(url);
+		const contentType = resp.headers["content-type"];
+		console.log("contenttype", contentType);
+		// contenType will be "image/png", "image/joeg", "video/mp4", "audio/mp3", etcera;
+		if (contentType.includes("image")) {
+			setSourceType(SOURCE_TYPE_IMAGE);
+		} else if (contentType.includes("video")) {
+			setSourceType(SOURCE_TYPE_VIDEO);
+		} else if (contentType.includes("audio")) {
+			setSourceType(SOURCE_TYPE_AUDIO);
+		} else if (contentType.includes("glb")) {
+			setSourceType(SOURCE_TYPE_3D);
+		}
+
+		setContentType(contentType);
+	}, []);
 	return (
 		<>
 			<li className="card">
@@ -13,15 +47,54 @@ const NftCard = (props) => {
 						? props.nft.metadata.name
 						: null}
 				</h2>
-				<img
-					src={props.nft.imageSrc}
-					className="card__image"
-					alt={
-						props.nft.metadata && props.nft.metadata.name
-							? props.nft.metadata.name
-							: null
-					}
-				/>
+				{/* okay, we need to iterate over the sourceType prop and determine whether we are rendering  an image, video, audio, or 3d */}
+				{sourceType === SOURCE_TYPE_IMAGE && (
+					<img
+						src={props.nft.imageSrc}
+						className="card__image"
+						alt={
+							props.nft.metadata && props.nft.metadata.name
+								? props.nft.metadata.name
+								: null
+						}
+					/>
+				)}
+
+				{sourceType === SOURCE_TYPE_VIDEO && (
+					<video controls>
+						<source
+							src={
+								props.nft.metadata &&
+								props.nft.metadata.animation_url
+									? transformMetadataUri(
+											props.nft.metadata.animation_url
+									  )
+									: props.nft.imageSrc
+							}
+							type={contentType}
+						/>
+					</video>
+				)}
+				{sourceType === SOURCE_TYPE_AUDIO && (
+					<>
+						<img
+							src={props.nft.imageSrc}
+							className="card__image"
+							alt={
+								props.nft.metadata && props.nft.metadata.name
+									? props.nft.metadata.name
+									: null
+							}
+						/>
+						<audio
+							controls
+							type={contentType}
+							src={transformMetadataUri(
+								props.nft.metadata.animation_url
+							)}
+						/>
+					</>
+				)}
 				<div className="card__overlay">
 					<div className="card__header">
 						<svg

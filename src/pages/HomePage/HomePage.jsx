@@ -9,7 +9,7 @@ const HomePage = () => {
 				<h2 className="homepage__title">Welcome to my NFT Gallery!</h2>
 				<p className="homepage__copy">
 					The idea is simple: enter an ETHEREUM address and see which
-					NFT's that wallet holds.
+					NFTs that wallet holds.
 				</p>
 				<p className="homepage__copy">
 					I've added the option to check out some celebrity portfolios

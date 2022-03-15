@@ -12,6 +12,7 @@ const SOURCE_TYPE_3D = "3D";
 const NftCard = (props) => {
 	const [contentType, setContentType] = useState("");
 	const [sourceType, setSourceType] = useState("");
+	const [showDescription, setShowDescription] = useState(null);
 
 	useEffect(async () => {
 		// we need to check if props.nft.metadata && props.nft.metadata.animation_url exist, and if they do, we actually want to check  THAT
@@ -23,20 +24,15 @@ const NftCard = (props) => {
 
 		const resp = await axios.head(url);
 		const contentType = resp.headers["content-type"];
-		console.log(
-			"axios response nft card header",
-			props.index,
-			resp,
-			props.index,
-			props.nft.metadata.name,
-			contentType
-		);
 		// console.log(
-		// 	"contenttype",
+		// 	"axios response nft card header",
+		// 	props.index,
+		// 	resp,
 		// 	props.index,
 		// 	props.nft.metadata.name,
 		// 	contentType
 		// );
+
 		// contenType will be "image/png", "image/joeg", "video/mp4", "audio/mp3", etcera;
 		if (contentType.includes("image")) {
 			setSourceType(SOURCE_TYPE_IMAGE);
@@ -76,7 +72,10 @@ const NftCard = (props) => {
 				)}
 
 				{sourceType === SOURCE_TYPE_VIDEO && (
-					<video controls>
+					<video
+						controls
+						controlsList="nodownload"
+						crossOrigin="anonymous">
 						<source
 							src={
 								props.nft.metadata &&
@@ -112,11 +111,11 @@ const NftCard = (props) => {
 				)}
 				<div className="card__overlay">
 					<div className="card__header">
-						<svg
+						{/* <svg
 							className="card__arc"
 							xmlns="http://www.w3.org/2000/svg">
 							<path />
-						</svg>
+						</svg> */}
 						<div className="card__header-text">
 							<h3 className="card__collection-name">
 								{props.nft.name ? props.nft.name : null}

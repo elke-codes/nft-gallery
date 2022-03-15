@@ -39,6 +39,7 @@ const CelebrityPage = () => {
 	const batchSize = 20;
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [loading, setLoading] = useState(false);
+
 	const getNftsToDisplay = () => {
 		if (!allNfts.length) {
 			// console.log("no length of all nfts, exiting early");

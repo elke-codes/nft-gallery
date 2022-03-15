@@ -75,7 +75,8 @@ const NftCard = (props) => {
 					<video
 						controls
 						controlsList="nodownload"
-						crossOrigin="anonymous">
+						// crossOrigin="anonymous"
+					>
 						<source
 							src={
 								props.nft.metadata &&

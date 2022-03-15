@@ -15,7 +15,7 @@ export const transformMetadataUri = (metadataUri, id) => {
 		// metadataUri = IPFS_GATEWAY_PREFIX + id;
 		// return metadataUri;
 	}
-	metadataUri = metadataUri.replace(".ipfs.dweb.link/", "");
+	metadataUri = metadataUri.replace(".ipfs.dweb.link", "");
 	metadataUri = metadataUri.replace("https:/cloudflare-ipfs.com/", "");
 	metadataUri = metadataUri.replace("cloudflare-ipfs.com/", "");
 	metadataUri = metadataUri.replace("https://ipfs.moralis.io/", "");

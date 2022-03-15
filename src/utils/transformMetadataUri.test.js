@@ -115,9 +115,9 @@ it("should transform a http url that has pinata.cloud", () => {
 	expect(transformed).toBe(expected);
 });
 
-it("should transform a http url that has .ipfs.dweb.link/", () => {
+it("should transform a http url that has .ipfs.dweb.link", () => {
 	const url =
-		"https://ipfs.io/ipfs/https://hornyhogs.mypinata.cloud/QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5B.ipfs.dweb.link/";
+		"https://ipfs.io/ipfs/https://hornyhogs.mypinata.cloud/QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5B.ipfs.dweb.link";
 
 	const transformed = transformMetadataUri(url);
 	const expected =
@@ -129,7 +129,7 @@ it("should transform a http url that has .ipfs.dweb.link/", () => {
 
 it("should transform a http url that has https://", () => {
 	const url =
-		"https://ipfs.io/ipfs/https://hornyhogs.mypinata.cloud/QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5B.ipfs.dweb.link/https://";
+		"https://ipfs.io/ipfs/https://hornyhogs.mypinata.cloud/QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5B.ipfs.dweb.link";
 
 	const transformed = transformMetadataUri(url);
 	const expected =

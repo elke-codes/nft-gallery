@@ -23,7 +23,20 @@ const NftCard = (props) => {
 
 		const resp = await axios.head(url);
 		const contentType = resp.headers["content-type"];
-		console.log("contenttype", contentType);
+		console.log(
+			"axios response nft card header",
+			props.index,
+			resp,
+			props.index,
+			props.nft.metadata.name,
+			contentType
+		);
+		// console.log(
+		// 	"contenttype",
+		// 	props.index,
+		// 	props.nft.metadata.name,
+		// 	contentType
+		// );
 		// contenType will be "image/png", "image/joeg", "video/mp4", "audio/mp3", etcera;
 		if (contentType.includes("image")) {
 			setSourceType(SOURCE_TYPE_IMAGE);
@@ -33,6 +46,8 @@ const NftCard = (props) => {
 			setSourceType(SOURCE_TYPE_AUDIO);
 		} else if (contentType.includes("glb")) {
 			setSourceType(SOURCE_TYPE_3D);
+		} else {
+			setSourceType(SOURCE_TYPE_IMAGE);
 		}
 
 		setContentType(contentType);

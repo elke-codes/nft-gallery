@@ -61,7 +61,7 @@ const CelebrityPage = () => {
 		setDisplayedNfts([]);
 		//call the api to fetch the nfts for the current address
 		const { nfts, totalCount } = await getNfts(address);
-		console.log("got all nfts");
+		// console.log("got all nfts");
 		//store all nfts fetched from the api in state
 		setAllNfts(nfts);
 		setLoading(false);

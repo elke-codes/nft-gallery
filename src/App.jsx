@@ -7,8 +7,8 @@ import Footer from "./components/Footer/Footer";
 import CelebrityPage from "./pages/CelebrityPage/CelebrityPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ReactGA from "react-ga";
-import "dotenv/config";
-const TRACKING_ID = process.env.GOOGLE_ANALYTICS_ID;
+// import "dotenv/config";
+const TRACKING_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
 ReactGA.initialize(TRACKING_ID);
 
 function App() {

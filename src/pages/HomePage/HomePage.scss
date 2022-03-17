@@ -25,7 +25,7 @@
 	}
 	&__copy {
 		line-height: 2;
-		font-size: 1rem;
+		font-size: 0.8rem;
 		@include tablet {
 			line-height: 3;
 			font-size: 1.25rem;
@@ -35,6 +35,12 @@
 		&:hover {
 			text-decoration: underline;
 		}
+	}
+
+	&__button-wrapper {
+		display: flex;
+		gap: 1rem;
+		margin-top: 1rem;
 	}
 
 	&__button {

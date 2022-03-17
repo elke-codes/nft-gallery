@@ -30,9 +30,14 @@ const HomePage = () => {
 					And happy browsing throught the wonderworld of digital art
 					collections!
 				</p>
-				<button className="homepage__button">
-					<Link to="/gallery">Check out the NFT Gallery</Link>
-				</button>
+				<div className="homepage__button-wrapper">
+					<button className="homepage__button">
+						<Link to="/celebrities">Celebrity Wallets</Link>
+					</button>
+					<button className="homepage__button">
+						<Link to="/gallery">Enter address</Link>
+					</button>
+				</div>
 			</section>
 		</main>
 	);

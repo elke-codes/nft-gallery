@@ -8,6 +8,7 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton";
 import celebrityData from "../../data/celebrities.json";
 import { Triangle } from "react-loader-spinner";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const CelebrityPage = () => {
 	// const handleSearch = (e) => {
@@ -49,10 +50,10 @@ const CelebrityPage = () => {
 		const nextNfts = allNfts.slice(currentIndex, currentIndex + batchSize);
 		setDisplayedNfts(displayedNfts.concat(nextNfts));
 		setCurrentIndex(currentIndex + batchSize);
-		setIsFetching(false);
+		// setIsFetching(false);
 	};
 
-	const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
+	// const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
 
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
 	useEffect(async () => {
@@ -134,6 +135,34 @@ const CelebrityPage = () => {
 						<ScrollUpButton />
 						<ScrollDownButton />
 					</article>
+
+					<InfiniteScroll
+						dataLength={displayedNfts.length} //This is important field to render the next data
+						next={getNftsToDisplay}
+						hasMore={true}
+						loader={<h4>Loading...</h4>}
+						endMessage={
+							<p style={{ textAlign: "center" }}>
+								<b>Yay! You have seen it all</b>
+							</p>
+						}
+						// // below props only if you need pull down functionality
+						// refreshFunction={this.refresh}
+						// pullDownToRefresh
+						// pullDownToRefreshThreshold={50}
+						// pullDownToRefreshContent={
+						// 	<h3 style={{ textAlign: "center" }}>
+						// 		&#8595; Pull down to refresh
+						// 	</h3>
+						// }
+						// releaseToRefreshContent={
+						// 	<h3 style={{ textAlign: "center" }}>
+						// 		&#8593; Release to refresh
+						// 	</h3>
+						// }
+					>
+						{<NftList displayedNfts={displayedNfts} />}
+					</InfiniteScroll>
 				</article>
 			)}
 		</section>

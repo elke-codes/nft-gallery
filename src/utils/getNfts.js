@@ -7,7 +7,7 @@ const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
 // return cursor
 // if cursor load next page
 export const getNfts = async (address) => {
-	// console.log("getting nfts", address);
+	console.log("getting nfts", address);
 	try {
 		const data = await axios.get(
 			`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal`,

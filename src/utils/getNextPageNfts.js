@@ -7,10 +7,10 @@ const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
 // return cursor
 // if cursor load next page
 export const getNextPageNfts = async ({ address, cursor }) => {
-	// console.log("getting nfts", address);
+	console.log("getting next nfts", address);
 	try {
 		const data = await axios.get(
-			`https://deep-index.moralis.io/api/v2/0x7217bc604476859303a27f111b187526231a300c/nft?chain=eth&format=decimal&cursor=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3aGVyZSI6eyJvd25lcl9vZiI6IjB4NzIxN2JjNjA0NDc2ODU5MzAzYTI3ZjExMWIxODc1MjYyMzFhMzAwYyJ9LCJsaW1pdCI6NTAwLCJvZmZzZXQiOjUwMCwib3JkZXIiOltbInRyYW5zZmVyX2luZGV4IiwiREVTQyJdXSwicGFnZSI6MSwia2V5IjoiMTI4MzM2MDcuMTc0LjMyNi4wIiwiaWF0IjoxNjQ3NjMzOTgzfQ.ST7LacG5FOZukTNMBwzv2CxkCCn50a4hPDem1oq1bns`,
+			`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal&cursor=${cursor}`,
 			{
 				headers: {
 					"X-API-KEY":
@@ -21,7 +21,7 @@ export const getNextPageNfts = async ({ address, cursor }) => {
 		);
 
 		console.log("Data getNextPageNfts", data);
-		console.log("cursor", data.data.cursor);
+		console.log("cursor getnextpagenfts", data.data.cursor);
 		// reliably return an array from this function
 		const nextNfts = await Promise.all(
 			(data.data.result || []).map(async (nft) => {
@@ -67,7 +67,7 @@ export const getNextPageNfts = async ({ address, cursor }) => {
 				return nft;
 			})
 		);
-		console.log("length nfts", nextNfts.length);
+		console.log("length nfts getnextpagenfts", nextNfts.length);
 		console.log("nft count", data.data.total);
 
 		return {

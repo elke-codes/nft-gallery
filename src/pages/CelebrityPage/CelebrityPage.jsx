@@ -9,6 +9,7 @@ import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton
 import celebrityData from "../../data/celebrities.json";
 import { Triangle } from "react-loader-spinner";
 import { getNextPageNfts } from "../../utils/getNextPageNfts";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const CelebrityPage = () => {
 	// const handleSearch = (e) => {
@@ -52,28 +53,31 @@ const CelebrityPage = () => {
 		const nextNfts = allNfts.slice(currentIndex, currentIndex + batchSize);
 		setDisplayedNfts(displayedNfts.concat(nextNfts));
 		setCurrentIndex(currentIndex + batchSize);
-		setIsFetching(false);
-		console.log("displayednfts length", displayedNfts.length);
+		// setIsFetching(false);
 	};
 
-	const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
+	// const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
 
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
-	useEffect(async () => {
+	useEffect(() => {
 		//avoid api call on page load
 		if (!address) return;
 		//when the address changes, reset the current index and displayednfts
 		setCurrentIndex(0);
 		setDisplayedNfts([]);
 		//call the api to fetch the nfts for the current address
-		const { nfts, totalCount } = await getNfts(address);
-		// console.log("got all nfts");
-		//store all nfts fetched from the api in state
-		setAllNfts(nfts);
-		setLoading(false);
+		async function fetchData() {
+			const { nfts, totalCount, cursor } = await getNfts(address);
+			// console.log("got all nfts");
+			//store all nfts fetched from the api in state
+			setAllNfts(nfts);
+			setLoading(false);
 
-		setTotalCount(totalCount);
-		setCursor(cursor);
+			setTotalCount(totalCount);
+			setCursor(cursor);
+			console.log("cursor fetchdaata", cursor);
+		}
+		fetchData();
 	}, [address]);
 
 	useEffect(() => {
@@ -82,7 +86,9 @@ const CelebrityPage = () => {
 
 	const loadMore = async (address, cursor) => {
 		// api call to load more with cursor
-		console.log("load more");
+		console.log("load more address", address, cursor);
+		console.log("load more cursor", cursor);
+
 		const nextNfts = await getNextPageNfts(address, cursor);
 		console.log("load more nextnfts", nextNfts);
 		setAllNfts(allNfts.concat(nextNfts));
@@ -141,23 +147,55 @@ const CelebrityPage = () => {
 						</>
 					)}
 
-					<article className="gallery__gallery">
+					{/* <article className="gallery__gallery">
 						{celebrity !== "select" && displayedNfts && (
 							<NftList displayedNfts={displayedNfts} />
 						)}
-						<ScrollUpButton />
-						<ScrollDownButton />
-					</article>
+	
+					</article> */}
+
+					<InfiniteScroll
+						dataLength={displayedNfts.length} //This is important field to render the next data
+						next={getNftsToDisplay}
+						hasMore={totalCount >= displayedNfts.length}
+						loader={<h4>Loading...</h4>}
+						endMessage={
+							<p style={{ textAlign: "center" }}>
+								<b>Yay! You have seen it all</b>
+							</p>
+						}
+						// // below props only if you need pull down functionality
+						// refreshFunction={this.refresh}
+						// pullDownToRefresh
+						// pullDownToRefreshThreshold={50}
+						// pullDownToRefreshContent={
+						// 	<h3 style={{ textAlign: "center" }}>
+						// 		&#8595; Pull down to refresh
+						// 	</h3>
+						// }
+						// releaseToRefreshContent={
+						// 	<h3 style={{ textAlign: "center" }}>
+						// 		&#8593; Release to refresh
+						// 	</h3>
+						// }
+					>
+						{<NftList displayedNfts={displayedNfts} />}
+					</InfiniteScroll>
+					<ScrollUpButton />
+					<ScrollDownButton />
 					{displayedNfts && displayedNfts.length < totalCount && (
 						<button
 							className="celebrities__button--load-more"
-							onClick={loadMore}>
+							onClick={(address, cursor) => {
+								console.log("onclick address", address);
+								console.log("onclick cursor", cursor);
+
+								loadMore(address, cursor);
+							}}>
 							load more
 						</button>
 					)}
 				</article>
-				// if hasMore is true && 500 nft have been shown, show load more button
-				// on load more make a new api call to request the next 500 nft s
 			)}
 		</section>
 	);

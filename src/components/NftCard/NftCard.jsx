@@ -22,31 +22,40 @@ const NftCard = (props) => {
 				? transformMetadataUri(props.nft.metadata.animation_url)
 				: props.nft.imageSrc;
 
-		const resp = await axios.head(url);
-		const contentType = resp.headers["content-type"];
-		// console.log(
-		// 	"axios response nft card header",
-		// 	props.index,
-		// 	resp,
-		// 	props.index,
-		// 	props.nft.metadata.name,
-		// 	contentType
-		// );
+		// const {sourcetype, contenttype} = await getsourcetype()
+		// setcontenttype(contenttype)
+		// setsourcetype(sourcetype)
 
-		// contenType will be "image/png", "image/joeg", "video/mp4", "audio/mp3", etcera;
-		if (contentType.includes("image")) {
-			setSourceType(SOURCE_TYPE_IMAGE);
-		} else if (contentType.includes("video")) {
-			setSourceType(SOURCE_TYPE_VIDEO);
-		} else if (contentType.includes("audio")) {
-			setSourceType(SOURCE_TYPE_AUDIO);
-		} else if (contentType.includes("glb")) {
-			setSourceType(SOURCE_TYPE_3D);
-		} else {
+		try {
+			const resp = await axios.head(url);
+			const contentType = resp.headers["content-type"];
+			// console.log(
+			// 	"axios response nft card header",
+			// 	props.index,
+			// 	resp,
+			// 	props.index,
+			// 	props.nft.metadata.name,
+			// 	contentType
+			// );
+
+			// contenType will be "image/png", "image/joeg", "video/mp4", "audio/mp3", etcera;
+			if (contentType.includes("image")) {
+				setSourceType(SOURCE_TYPE_IMAGE);
+			} else if (contentType.includes("video")) {
+				setSourceType(SOURCE_TYPE_VIDEO);
+			} else if (contentType.includes("audio")) {
+				setSourceType(SOURCE_TYPE_AUDIO);
+			} else if (contentType.includes("glb")) {
+				setSourceType(SOURCE_TYPE_3D);
+			} else {
+				setSourceType(SOURCE_TYPE_IMAGE);
+			}
+
+			setContentType(contentType);
+		} catch (e) {
+			// everything that fails the contenttype looked will be an image
 			setSourceType(SOURCE_TYPE_IMAGE);
 		}
-
-		setContentType(contentType);
 	}, []);
 	return (
 		<>

@@ -7,7 +7,7 @@ const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
 // return cursor
 // if cursor load next page
 export const getNfts = async (address) => {
-	// console.log("getting nfts", address);
+	console.log("getting nfts", address);
 	try {
 		const data = await axios.get(
 			`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal`,
@@ -21,7 +21,7 @@ export const getNfts = async (address) => {
 		);
 
 		console.log("Data", data);
-		console.log("cursor", data.data.cursor);
+		console.log("get nfts cursor", data.data.cursor);
 		// reliably return an array from this function
 		const nfts = await Promise.all(
 			(data.data.result || []).map(async (nft) => {
@@ -67,7 +67,7 @@ export const getNfts = async (address) => {
 				return nft;
 			})
 		);
-		console.log("length nfts", nfts.length);
+		console.log("length nfts get nfts", nfts.length);
 		console.log("nft count", data.data.total);
 
 		return {

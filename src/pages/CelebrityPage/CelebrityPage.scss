@@ -30,4 +30,9 @@
 		flex-direction: column;
 		align-items: center;
 	}
+
+	&__button--load-more {
+		@include button-standard;
+		margin-bottom: 5rem;
+	}
 }

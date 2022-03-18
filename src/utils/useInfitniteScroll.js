@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 const useInfiniteScroll = (callback) => {
+	console.log("infinitescroll start");
 	const [isFetching, setIsFetching] = useState(false);
 
 	useEffect(() => {
@@ -18,7 +19,7 @@ const useInfiniteScroll = (callback) => {
 	useEffect(() => {
 		if (!isFetching) return;
 		callback(() => {
-			console.log("called back");
+			console.log("is fetching called back");
 		});
 	}, [isFetching]);
 

@@ -8,6 +8,7 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton";
 import celebrityData from "../../data/celebrities.json";
 import { Triangle } from "react-loader-spinner";
+import { getNextPageNfts } from "../../utils/getNextPageNfts";
 
 const CelebrityPage = () => {
 	// const handleSearch = (e) => {
@@ -39,9 +40,11 @@ const CelebrityPage = () => {
 	const batchSize = 20;
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [loading, setLoading] = useState(false);
+	const [cursor, setCursor] = useState("");
 
 	const getNftsToDisplay = () => {
 		console.log("getting nfts to display");
+		console.log("allnfts getnfts to display", allNfts.length);
 		if (!allNfts.length) {
 			// console.log("no length of all nfts, exiting early");
 			return;
@@ -50,6 +53,7 @@ const CelebrityPage = () => {
 		setDisplayedNfts(displayedNfts.concat(nextNfts));
 		setCurrentIndex(currentIndex + batchSize);
 		setIsFetching(false);
+		console.log("displayednfts length", displayedNfts.length);
 	};
 
 	const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
@@ -69,12 +73,22 @@ const CelebrityPage = () => {
 		setLoading(false);
 
 		setTotalCount(totalCount);
+		setCursor(cursor);
 	}, [address]);
 
 	useEffect(() => {
 		getNftsToDisplay();
 	}, [allNfts]);
 
+	const loadMore = async (address, cursor) => {
+		// api call to load more with cursor
+		console.log("load more");
+		const nextNfts = await getNextPageNfts(address, cursor);
+		console.log("load more nextnfts", nextNfts);
+		setAllNfts(allNfts.concat(nextNfts));
+		console.log("load more all nfts", allNfts);
+		// TODO set cursor
+	};
 	return (
 		<section className="celebrities">
 			{/* <CelebrityList onSearch={handleSearch} /> */}
@@ -134,7 +148,16 @@ const CelebrityPage = () => {
 						<ScrollUpButton />
 						<ScrollDownButton />
 					</article>
+					{displayedNfts && displayedNfts.length < totalCount && (
+						<button
+							className="celebrities__button--load-more"
+							onClick={loadMore}>
+							load more
+						</button>
+					)}
 				</article>
+				// if hasMore is true && 500 nft have been shown, show load more button
+				// on load more make a new api call to request the next 500 nft s
 			)}
 		</section>
 	);

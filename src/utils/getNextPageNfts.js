@@ -3,11 +3,8 @@ import { transformMetadataUri } from "./transformMetadataUri";
 import { transformTokenUri } from "./transformTokenUri";
 import cantload from "../../src/assets/images/cantload.png";
 const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
-// TODO pass in cursor
-// return cursor
-// if cursor load next page
-export const getNextPageNfts = async ({ address, cursor }) => {
-	console.log("getting next nfts", address);
+
+export const getNextPageNfts = async (address, cursor) => {
 	try {
 		const data = await axios.get(
 			`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal&cursor=${cursor}`,
@@ -22,8 +19,8 @@ export const getNextPageNfts = async ({ address, cursor }) => {
 
 		console.log("Data getNextPageNfts", data);
 		console.log("cursor getnextpagenfts", data.data.cursor);
-		// reliably return an array from this function
 		const nextNfts = await Promise.all(
+			// reliably return an array from this function
 			(data.data.result || []).map(async (nft) => {
 				// console.log("in loop");
 				let metadata;

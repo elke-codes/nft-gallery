@@ -45,7 +45,7 @@ const CelebrityPage = () => {
 
 	const getNftsToDisplay = () => {
 		console.log("getting nfts to display");
-		console.log("allnfts getnfts to display", allNfts.length);
+		console.log(" getnfts to display", displayedNfts.length);
 		if (!allNfts.length) {
 			// console.log("no length of all nfts, exiting early");
 			return;
@@ -59,41 +59,46 @@ const CelebrityPage = () => {
 	// const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
 
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
-	useEffect(() => {
+	useEffect(async () => {
 		//avoid api call on page load
 		if (!address) return;
 		//when the address changes, reset the current index and displayednfts
 		setCurrentIndex(0);
 		setDisplayedNfts([]);
 		//call the api to fetch the nfts for the current address
-		async function fetchData() {
-			const { nfts, totalCount, cursor } = await getNfts(address);
-			// console.log("got all nfts");
-			//store all nfts fetched from the api in state
-			setAllNfts(nfts);
-			setLoading(false);
+		const { nfts, totalCount, cursor } = await getNfts(address);
+		// console.log("got all nfts");
+		//store all nfts fetched from the api in state
+		setAllNfts(nfts);
+		setLoading(false);
 
-			setTotalCount(totalCount);
-			setCursor(cursor);
-			console.log("cursor fetchdaata", cursor);
-		}
-		fetchData();
+		setTotalCount(totalCount);
+		setCursor(cursor);
 	}, [address]);
 
 	useEffect(() => {
+		console.log(
+			"allnfts changed, getting nfts to display",
+			allNfts.length,
+			allNfts,
+			typeof allNfts
+		);
+		if (!allNfts.length) {
+			return;
+		}
 		getNftsToDisplay();
+		console.log("DONE allnfts changes, getting nfts to display");
 	}, [allNfts]);
 
-	const loadMore = async (address, cursor) => {
+	const loadMore = async () => {
 		// api call to load more with cursor
-		console.log("load more address", address, cursor);
-		console.log("load more cursor", cursor);
-
-		const nextNfts = await getNextPageNfts(address, cursor);
-		console.log("load more nextnfts", nextNfts);
+		const { nextNfts } = await getNextPageNfts(address, cursor);
+		console.log("load more nextnfts axios result", nextNfts);
+		console.log("load more allnfts", allNfts);
 		setAllNfts(allNfts.concat(nextNfts));
-		console.log("load more all nfts", allNfts);
-		// TODO set cursor
+		// const addedAllNfts = allNfts.concat(newNfts);
+		// setAllNfts(allNfts);
+		// TODO set next cursor
 	};
 	return (
 		<section className="celebrities">
@@ -155,10 +160,10 @@ const CelebrityPage = () => {
 					</article> */}
 
 					<InfiniteScroll
-						dataLength={displayedNfts.length} //This is important field to render the next data
+						dataLength={displayedNfts.length}
 						next={getNftsToDisplay}
 						hasMore={totalCount >= displayedNfts.length}
-						loader={<h4>Loading...</h4>}
+						// loader={<h4>Loading...</h4>}
 						endMessage={
 							<p style={{ textAlign: "center" }}>
 								<b>Yay! You have seen it all</b>
@@ -186,12 +191,13 @@ const CelebrityPage = () => {
 					{displayedNfts && displayedNfts.length < totalCount && (
 						<button
 							className="celebrities__button--load-more"
-							onClick={(address, cursor) => {
-								console.log("onclick address", address);
-								console.log("onclick cursor", cursor);
+							// onClick={(address, cursor) => {
+							// 	console.log("onclick address", address);
+							// 	console.log("onclick cursor", cursor);
 
-								loadMore(address, cursor);
-							}}>
+							// 	loadMore(address, cursor);
+							// }}
+							onClick={loadMore}>
 							load more
 						</button>
 					)}

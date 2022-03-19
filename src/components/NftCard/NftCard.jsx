@@ -37,6 +37,7 @@ const NftCard = (props) => {
 			// 	props.nft.metadata.name,
 			// 	contentType
 			// );
+			// console.log("ContentType", contentType);
 
 			// contenType will be "image/png", "image/joeg", "video/mp4", "audio/mp3", etcera;
 			if (contentType.includes("image")) {
@@ -55,6 +56,7 @@ const NftCard = (props) => {
 		} catch (e) {
 			// everything that fails the contenttype looked will be an image
 			setSourceType(SOURCE_TYPE_IMAGE);
+			// console.log("axios head error", e);
 		}
 	}, []);
 	return (

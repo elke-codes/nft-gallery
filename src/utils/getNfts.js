@@ -20,10 +20,10 @@ export const getNfts = async (address) => {
 			}
 		);
 
-		console.log("Data", data);
-		console.log("get nfts cursor", data.data.cursor);
-		// reliably return an array from this function
+		// console.log("Data", data);
+		// console.log("get nfts cursor", data.data.cursor);
 		const nfts = await Promise.all(
+			// reliably return an array from this function
 			(data.data.result || []).map(async (nft) => {
 				// console.log("in loop");
 				let metadata;

@@ -10,6 +10,7 @@ import celebrityData from "../../data/celebrities.json";
 import { Triangle } from "react-loader-spinner";
 import { getNextPageNfts } from "../../utils/getNextPageNfts";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { v4 as uuid } from "uuid";
 
 const CelebrityPage = () => {
 	// const handleSearch = (e) => {
@@ -92,13 +93,11 @@ const CelebrityPage = () => {
 
 	const loadMore = async () => {
 		// api call to load more with cursor
-		const { nextNfts } = await getNextPageNfts(address, cursor);
-		console.log("load more nextnfts axios result", nextNfts);
-		console.log("load more allnfts", allNfts);
+		const { nextNfts, cursor } = await getNextPageNfts(address, cursor);
+		// console.log("load more nextnfts axios result", nextNfts);
+		// console.log("load more allnfts", allNfts);
 		setAllNfts(allNfts.concat(nextNfts));
-		// const addedAllNfts = allNfts.concat(newNfts);
-		// setAllNfts(allNfts);
-		// TODO set next cursor
+		setCursor(cursor);
 	};
 	return (
 		<section className="celebrities">
@@ -109,7 +108,9 @@ const CelebrityPage = () => {
 					className="celebrities__select"
 					value={celebrity}
 					onChange={handleChange}>
-					<option value="select">---select celebrity---</option>
+					<option value="select" key={uuid()}>
+						---select celebrity---
+					</option>
 					{celebrityData.map((celebrity) => {
 						return (
 							<option value={celebrity.name}>

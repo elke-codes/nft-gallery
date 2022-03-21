@@ -110,9 +110,7 @@ const CelebrityPage = () => {
 					className="celebrities__select"
 					value={celebrity}
 					onChange={handleChange}>
-					<option value="select" key={celebrity.name}>
-						---select celebrity---
-					</option>
+					<option value="select">---select celebrity---</option>
 					{celebrityData.map((celebrity) => {
 						return (
 							<option value={celebrity.name} key={celebrity.name}>

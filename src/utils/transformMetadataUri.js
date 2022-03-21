@@ -27,6 +27,7 @@ export const transformMetadataUri = (metadataUri, id) => {
 	metadataUri = metadataUri.replace("ipfs://", "");
 	metadataUri = metadataUri.replace("0x{id}", id);
 	metadataUri = metadataUri.replace("{id}", id);
+	metadataUri = metadataUri.replace("http", "https");
 	metadataUri = IPFS_GATEWAY_PREFIX + "ipfs/" + metadataUri;
 
 	return metadataUri;

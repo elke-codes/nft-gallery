@@ -150,3 +150,15 @@ it("should transform a http url that has cloudflare-ipfs.com/", () => {
 		"QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5B";
 	expect(transformed).toBe(expected);
 });
+
+it("should transform a http url that has http", () => {
+	const url =
+		"http://ipfs.io/ipfs/https://hornyhogs.mypinata.cloud/QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5Bcloudflare-ipfs.com/";
+
+	const transformed = transformMetadataUri(url);
+	const expected =
+		IPFS_GATEWAY_PREFIX +
+		"ipfs/" +
+		"QmTkHwTiQzkwCQfSz9ugMu3Qt56Sj2ZHi28CKLqzTRGn5B";
+	expect(transformed).toBe(expected);
+});

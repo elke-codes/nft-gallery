@@ -113,7 +113,7 @@ const CelebrityPage = () => {
 					</option>
 					{celebrityData.map((celebrity) => {
 						return (
-							<option value={celebrity.name}>
+							<option value={celebrity.name} key={uuid()}>
 								{celebrity.name}
 							</option>
 						);
@@ -165,11 +165,11 @@ const CelebrityPage = () => {
 						next={getNftsToDisplay}
 						hasMore={totalCount >= displayedNfts.length}
 						// loader={<h4>Loading...</h4>}
-						endMessage={
-							<p style={{ textAlign: "center" }}>
-								<b>Yay! You have seen it all</b>
-							</p>
-						}
+						// endMessage={
+						// 	<p style={{ textAlign: "center" }}>
+						// 		<b>Yay! You have seen it all</b>
+						// 	</p>
+						// }
 						// // below props only if you need pull down functionality
 						// refreshFunction={this.refresh}
 						// pullDownToRefresh
@@ -192,12 +192,6 @@ const CelebrityPage = () => {
 					{displayedNfts && displayedNfts.length < totalCount && (
 						<button
 							className="celebrities__button--load-more"
-							// onClick={(address, cursor) => {
-							// 	console.log("onclick address", address);
-							// 	console.log("onclick cursor", cursor);
-
-							// 	loadMore(address, cursor);
-							// }}
 							onClick={loadMore}>
 							load more
 						</button>

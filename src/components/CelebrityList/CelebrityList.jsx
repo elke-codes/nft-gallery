@@ -42,7 +42,7 @@ const CelebrityList = (props) => {
 				<select name="" id="">
 					{celebrityData.map((celebrity) => {
 						return (
-							<option value={celebrity.name}>
+							<option value={celebrity.name} key={uuid()}>
 								{celebrity.name}
 							</option>
 						);

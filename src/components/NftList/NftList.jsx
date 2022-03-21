@@ -1,22 +1,17 @@
 import React from "react";
 import NftCard from "../NftCard/NftCard";
 import "./NftList.scss";
-import { v4 as uuid } from "uuid";
 
 const NftList = (props) => {
-	// console.log("nftlist props", props);
+	// console.log("nftlist props", props.displayedNfts);
 	return (
 		<>
 			{props.displayedNfts.length > 0 && (
 				<ul className="cards">
 					{props.displayedNfts.map((nft, i) => {
-						// console.log("mapping");
+						console.log("nft", nft.token_address);
 						return (
-							<NftCard
-								nft={nft}
-								key={uuid()}
-								// index={i}
-							/>
+							<NftCard nft={nft} key={nft.token_address + i} />
 						);
 					})}
 				</ul>

@@ -10,7 +10,6 @@ import celebrityData from "../../data/celebrities.json";
 import { Triangle } from "react-loader-spinner";
 import { getNextPageNfts } from "../../utils/getNextPageNfts";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { v4 as uuid } from "uuid";
 
 const CelebrityPage = () => {
 	// const handleSearch = (e) => {
@@ -111,12 +110,12 @@ const CelebrityPage = () => {
 					className="celebrities__select"
 					value={celebrity}
 					onChange={handleChange}>
-					<option value="select" key={uuid()}>
+					<option value="select" key={celebrity.name}>
 						---select celebrity---
 					</option>
 					{celebrityData.map((celebrity) => {
 						return (
-							<option value={celebrity.name} key={uuid()}>
+							<option value={celebrity.name} key={celebrity.name}>
 								{celebrity.name}
 							</option>
 						);
@@ -189,7 +188,12 @@ const CelebrityPage = () => {
 						// 	</h3>
 						// }
 					>
-						{<NftList displayedNfts={displayedNfts} />}
+						{
+							<NftList
+								displayedNfts={displayedNfts}
+								// key={allNfts.token_address}
+							/>
+						}
 					</InfiniteScroll>
 					<ScrollUpButton />
 					<ScrollDownButton />

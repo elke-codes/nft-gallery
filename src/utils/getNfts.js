@@ -14,8 +14,9 @@ export const getNfts = async (address) => {
 			{
 				headers: {
 					"X-API-KEY":
-						"csUE0cmbWJageAjqXURl5CahhEgpObzsuCpE5bjBKRQl16ArCB556UmPPvv8qGj7",
-					"Access-Control-Allow-Origin": "*"
+						"csUE0cmbWJageAjqXURl5CahhEgpObzsuCpE5bjBKRQl16ArCB556UmPPvv8qGj7"
+					// 	,
+					// "Access-Control-Allow-Origin": "*"
 				}
 			}
 		);

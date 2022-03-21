@@ -164,7 +164,7 @@ const CelebrityPage = () => {
 						dataLength={displayedNfts.length}
 						next={getNftsToDisplay}
 						hasMore={totalCount >= displayedNfts.length}
-						style={{ overflow: " unset" }}
+						style={{ overflow: " unset", "padding-bottom": "3rem" }}
 						// loader={<h4>Loading...</h4>}
 						// endMessage={
 						// 	<p style={{ textAlign: "center" }}>

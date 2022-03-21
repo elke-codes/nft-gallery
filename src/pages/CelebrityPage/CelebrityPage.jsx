@@ -43,6 +43,7 @@ const CelebrityPage = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [loading, setLoading] = useState(false);
 	const [cursor, setCursor] = useState("");
+	const [loadingMore, setLoadingMore] = useState(false);
 
 	const getNftsToDisplay = () => {
 		console.log("getting nfts to display");
@@ -93,11 +94,13 @@ const CelebrityPage = () => {
 
 	const loadMore = async () => {
 		// api call to load more with cursor
-		const { nextNfts, cursor } = await getNextPageNfts(address, cursor);
+		setLoadingMore(true);
+		const { nextNfts, newCursor } = await getNextPageNfts(address, cursor);
 		// console.log("load more nextnfts axios result", nextNfts);
 		// console.log("load more allnfts", allNfts);
 		setAllNfts(allNfts.concat(nextNfts));
-		setCursor(cursor);
+		setCursor(newCursor);
+		setLoadingMore(false);
 	};
 	return (
 		<section className="celebrities">
@@ -164,6 +167,7 @@ const CelebrityPage = () => {
 						dataLength={displayedNfts.length}
 						next={getNftsToDisplay}
 						hasMore={totalCount >= displayedNfts.length}
+						style={{ overflow: " unset" }}
 						// loader={<h4>Loading...</h4>}
 						// endMessage={
 						// 	<p style={{ textAlign: "center" }}>
@@ -189,12 +193,27 @@ const CelebrityPage = () => {
 					</InfiniteScroll>
 					<ScrollUpButton />
 					<ScrollDownButton />
-					{displayedNfts && displayedNfts.length < totalCount && (
-						<button
-							className="celebrities__button--load-more"
-							onClick={loadMore}>
-							load more
-						</button>
+					{!loadingMore &&
+						displayedNfts &&
+						displayedNfts.length < totalCount && (
+							<button
+								className="celebrities__button--load-more"
+								onClick={loadMore}>
+								load more
+							</button>
+						)}
+					{loadingMore && (
+						<>
+							<Triangle
+								type="Triangle"
+								color="black"
+								height={80}
+								width={80}
+							/>
+							<p className="celebrities__loading-more">
+								Loading more ...
+							</p>
+						</>
 					)}
 				</article>
 			)}

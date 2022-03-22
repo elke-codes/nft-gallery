@@ -10,6 +10,7 @@ const SOURCE_TYPE_VIDEO = "video";
 const SOURCE_TYPE_3D = "3D";
 
 const NftCard = (props) => {
+	console.log("nftcard props ", props, props.index);
 	const [contentType, setContentType] = useState("");
 	const [sourceType, setSourceType] = useState("");
 	const [showDescription, setShowDescription] = useState(null);

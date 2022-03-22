@@ -22,6 +22,7 @@ const CelebrityPage = () => {
 
 	const handleChange = (e) => {
 		e.preventDefault();
+		setCelebrity(null);
 		setTotalCount(0);
 		setCelebrity(e.target.value);
 		const celebrityAll = celebrityData.find((celebrity) => {

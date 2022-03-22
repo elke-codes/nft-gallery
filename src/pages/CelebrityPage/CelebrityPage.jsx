@@ -107,6 +107,7 @@ const CelebrityPage = () => {
 		// console.log("load more nextnfts axios result", nextNfts);
 		// console.log("load more allFetchednfts", allFetchedNfts);
 		setAllFetchedNfts(allFetchedNfts.concat(nextNfts));
+		console.log("load more new cursor", newCursor);
 		setCursor(newCursor);
 		setLoadingMore(false);
 	};
@@ -183,13 +184,39 @@ const CelebrityPage = () => {
 						// loader={<h4>Loading...</h4>}
 						endMessage={
 							displayedNfts.length > 0 && (
-								<p
-									style={{
-										textAlign: "center",
-										paddingTop: "2rem"
-									}}>
-									<b>Yay! You have seen it all</b>
-								</p>
+								<>
+									<p
+										style={{
+											textAlign: "center",
+											paddingTop: "2rem"
+										}}>
+										<b>Yay! You have seen it all</b>
+									</p>
+
+									<article className="celebrities__dropdown">
+										<h2>
+											Check out another celebrities' NFTs
+										</h2>
+
+										<select
+											className="celebrities__select"
+											value={celebrity}
+											onChange={handleChange}>
+											<option value="select">
+												---select celebrity---
+											</option>
+											{celebrityData.map((celebrity) => {
+												return (
+													<option
+														value={celebrity.name}
+														key={celebrity.name}>
+														{celebrity.name}
+													</option>
+												);
+											})}
+										</select>
+									</article>
+								</>
 							)
 						}
 						// // below props only if you need pull down functionality

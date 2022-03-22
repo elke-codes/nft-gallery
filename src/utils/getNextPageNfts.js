@@ -5,6 +5,8 @@ import cantload from "../../src/assets/images/cantload.png";
 const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
 
 export const getNextPageNfts = async (address, cursor) => {
+	console.log("get next page nfts address cursor", address, cursor);
+
 	try {
 		const data = await axios.get(
 			`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal&cursor=${cursor}`,
@@ -71,7 +73,7 @@ export const getNextPageNfts = async (address, cursor) => {
 		return {
 			nextNfts,
 			totalCount: data.data.total,
-			cursor: data.data.cursor
+			newCursor: data.data.cursor
 		};
 	} catch (e) {
 		console.log("axios error", e);

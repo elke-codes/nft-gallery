@@ -56,7 +56,7 @@ const NftCard = (props) => {
 		} catch (e) {
 			// everything that fails the contenttype looked will be an image
 			setSourceType(SOURCE_TYPE_IMAGE);
-			console.log("axios head error", e);
+			// console.log("axios head error", e);
 		}
 	}, []);
 
@@ -64,6 +64,7 @@ const NftCard = (props) => {
 		<>
 			<li className="card">
 				<h2 className="card__title">
+					{props.index}{" "}
 					{props.nft.metadata && props.nft.metadata.name
 						? props.nft.metadata.name
 						: null}

@@ -32,7 +32,7 @@ const CelebrityPage = () => {
 		setLoading(true);
 	};
 
-	const [allNfts, setAllNfts] = useState([]);
+	const [allFetchedNfts, setAllFetchedNfts] = useState([]);
 	const [totalCount, setTotalCount] = useState();
 	const [address, setAddress] = useState();
 	const [celebrity, setCelebrity] = useState();
@@ -43,17 +43,26 @@ const CelebrityPage = () => {
 	const [loading, setLoading] = useState(false);
 	const [cursor, setCursor] = useState("");
 	const [loadingMore, setLoadingMore] = useState(false);
+	const hasMore = totalCount > displayedNfts.length;
 
 	const getNftsToDisplay = () => {
 		console.log("getting nfts to display");
-		console.log(" getnfts to display", displayedNfts.length);
-		if (!allNfts.length) {
-			// console.log("no length of all nfts, exiting early");
+		if (!allFetchedNfts.length) {
+			console.log("no length of all nfts, exiting early");
 			return;
 		}
-		const nextNfts = allNfts.slice(currentIndex, currentIndex + batchSize);
+		if (displayedNfts.length === allFetchedNfts.length) {
+			return;
+		}
+		const nextNfts = allFetchedNfts.slice(
+			currentIndex,
+			currentIndex + batchSize
+		);
+		console.log("next nfts", nextNfts);
 		setDisplayedNfts(displayedNfts.concat(nextNfts));
 		setCurrentIndex(currentIndex + batchSize);
+		console.log("currentIndex", currentIndex);
+
 		// setIsFetching(false);
 	};
 
@@ -70,7 +79,7 @@ const CelebrityPage = () => {
 		const { nfts, totalCount, cursor } = await getNfts(address);
 		// console.log("got all nfts");
 		//store all nfts fetched from the api in state
-		setAllNfts(nfts);
+		setAllFetchedNfts(nfts);
 		setLoading(false);
 
 		setTotalCount(totalCount);
@@ -78,29 +87,34 @@ const CelebrityPage = () => {
 	}, [address]);
 
 	useEffect(() => {
-		console.log(
-			"allnfts changed, getting nfts to display",
-			allNfts.length,
-			allNfts,
-			typeof allNfts
-		);
-		if (!allNfts.length) {
+		// console.log(
+		// 	"allFetchednfts changed, getting nfts to display",
+		// 	allFetchedNfts.length,
+		// 	allFetchedNfts,
+		// 	typeof allFetchedNfts
+		// );
+		if (!allFetchedNfts.length) {
 			return;
 		}
 		getNftsToDisplay();
-		console.log("DONE allnfts changes, getting nfts to display");
-	}, [allNfts]);
+		// console.log("DONE allFetchedNfts changes, getting nfts to display");
+	}, [allFetchedNfts]);
 
 	const loadMore = async () => {
 		// api call to load more with cursor
 		setLoadingMore(true);
 		const { nextNfts, newCursor } = await getNextPageNfts(address, cursor);
 		// console.log("load more nextnfts axios result", nextNfts);
-		// console.log("load more allnfts", allNfts);
-		setAllNfts(allNfts.concat(nextNfts));
+		// console.log("load more allFetchednfts", allFetchedNfts);
+		setAllFetchedNfts(allFetchedNfts.concat(nextNfts));
 		setCursor(newCursor);
 		setLoadingMore(false);
 	};
+
+	console.log("displayedNFts", displayedNfts.length);
+	console.log("allFetchednfts", allFetchedNfts.length);
+	console.log("hasmore", totalCount > displayedNfts.length);
+
 	return (
 		<section className="celebrities">
 			{/* <CelebrityList onSearch={handleSearch} /> */}
@@ -161,16 +175,23 @@ const CelebrityPage = () => {
 					</article> */}
 
 					<InfiniteScroll
+						// dataLength={displayedNfts.length}
 						dataLength={displayedNfts.length}
 						next={getNftsToDisplay}
-						hasMore={totalCount >= displayedNfts.length}
-						style={{ overflow: " unset", "padding-bottom": "3rem" }}
+						hasMore={hasMore}
+						style={{ overflow: " unset", paddingBottom: "3rem" }}
 						// loader={<h4>Loading...</h4>}
-						// endMessage={
-						// 	<p style={{ textAlign: "center" }}>
-						// 		<b>Yay! You have seen it all</b>
-						// 	</p>
-						// }
+						endMessage={
+							displayedNfts.length > 0 && (
+								<p
+									style={{
+										textAlign: "center",
+										paddingTop: "2rem"
+									}}>
+									<b>Yay! You have seen it all</b>
+								</p>
+							)
+						}
 						// // below props only if you need pull down functionality
 						// refreshFunction={this.refresh}
 						// pullDownToRefresh
@@ -189,7 +210,7 @@ const CelebrityPage = () => {
 						{
 							<NftList
 								displayedNfts={displayedNfts}
-								// key={allNfts.token_address}
+								// key={allFetchedNfts.token_address}
 							/>
 						}
 					</InfiniteScroll>
@@ -197,7 +218,7 @@ const CelebrityPage = () => {
 					<ScrollDownButton />
 					{!loadingMore &&
 						displayedNfts &&
-						displayedNfts.length < totalCount && (
+						totalCount > displayedNfts.length && (
 							<button
 								className="celebrities__button--load-more"
 								onClick={loadMore}>

@@ -9,7 +9,11 @@ const NftList = (props) => {
 				<ul className="cards">
 					{props.displayedNfts.map((nft, i) => {
 						return (
-							<NftCard nft={nft} key={nft.token_address + i} />
+							<NftCard
+								nft={nft}
+								key={nft.token_address + i}
+								index={i}
+							/>
 						);
 					})}
 				</ul>

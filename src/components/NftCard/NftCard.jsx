@@ -64,7 +64,6 @@ const NftCard = (props) => {
 		<>
 			<li className="card">
 				<h2 className="card__title">
-					{props.index}{" "}
 					{props.nft.metadata && props.nft.metadata.name
 						? props.nft.metadata.name
 						: null}

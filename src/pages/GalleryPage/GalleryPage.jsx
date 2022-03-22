@@ -9,60 +9,75 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import useInfiniteScroll from "../../utils/useInfitniteScroll";
 import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton";
 import { Grid, Triangle } from "react-loader-spinner";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const GalleryPage = () => {
 	const handleSearch = (address, celebrity) => {
 		setAddress(address);
-		setCelebrity(celebrity);
+		// setCelebrity(celebrity);
 		setLoading(true);
 	};
-	const [allNfts, setAllNfts] = useState([]);
+	const [allFetchedNfts, setAllFetchedNfts] = useState([]);
 	const [totalCount, setTotalCount] = useState();
 	const [address, setAddress] = useState();
-	const [celebrity, setCelebrity] = useState();
+	// const [celebrity, setCelebrity] = useState();
 
 	const [displayedNfts, setDisplayedNfts] = useState([]);
 	const batchSize = 20;
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [loading, setLoading] = useState(false);
+	const [cursor, setCursor] = useState("");
+	const hasMore = totalCount > displayedNfts.length;
+
 	const getNftsToDisplay = () => {
-		if (!allNfts.length) {
-			// console.log("no length of all nfts, exiting early");
+		if (!allFetchedNfts.length) {
+			console.log("no length of all nfts, exiting early");
 			return;
 		}
-		const nextNfts = allNfts.slice(currentIndex, currentIndex + batchSize);
+		if (displayedNfts.length === allFetchedNfts.length) {
+			console.log(
+				"displayedNfts.length === allFetchedNfts.length returning"
+			);
+			return;
+		}
+		const nextNfts = allFetchedNfts.slice(
+			currentIndex,
+			currentIndex + batchSize
+		);
 		setDisplayedNfts(displayedNfts.concat(nextNfts));
 		setCurrentIndex(currentIndex + batchSize);
-		setIsFetching(false);
+		// setIsFetching(false);
 	};
 
-	const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
+	// const [isFetching, setIsFetching] = useInfiniteScroll(getNftsToDisplay);
 
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
 	useEffect(async () => {
-		// console.log("address changed");
 		if (!address) return;
 		//when the address changes, reset the current index and displayednfts
 		setCurrentIndex(0);
 		setDisplayedNfts([]);
 		//call the api to fetch the nfts for the current address
-		const { nfts, totalCount } = await getNfts(address);
+		const { nfts, totalCount, cursor } = await getNfts(address);
 		//store all nfts fetched from the api in state
-		setAllNfts(nfts);
+		setAllFetchedNfts(nfts);
 		setLoading(false);
 		setTotalCount(totalCount);
+		setCursor(cursor);
 	}, [address]);
 
 	useEffect(() => {
 		getNftsToDisplay();
-	}, [allNfts]);
-
+	}, [allFetchedNfts]);
+	console.log("totalcount", totalCount);
+	console.log("hasmore", hasMore);
 	return (
 		<>
+			{console.log("rendering")}
 			<main className="gallery">
 				<div className="gallery__main-container">
 					<div className="gallery__search-container">
-						<SearchBar onSearch={handleSearch} />
+						<SearchBar onSearch={handleSearch} address={address} />
 					</div>
 					{loading && (
 						<>
@@ -92,13 +107,32 @@ const GalleryPage = () => {
 							</>
 						)}
 					</div>
-					<section className="gallery__gallery">
-						{displayedNfts && (
-							<NftList displayedNfts={displayedNfts} />
-						)}
-						<ScrollUpButton />
-						<ScrollDownButton />
-					</section>
+					<InfiniteScroll
+						dataLength={displayedNfts.length}
+						next={getNftsToDisplay}
+						hasMore={hasMore}
+						style={{ overflow: " unset", paddingBottom: "3rem" }}
+						// loader={<h4>Loading...</h4>}
+
+						endMessage={
+							displayedNfts.length > 0 && (
+								<p
+									style={{
+										textAlign: "center",
+										paddingTop: "2rem"
+									}}>
+									<b>Yay! You have seen it all</b>
+								</p>
+							)
+						}>
+						<section className="gallery__gallery">
+							{displayedNfts && (
+								<NftList displayedNfts={displayedNfts} />
+							)}
+							<ScrollUpButton />
+							<ScrollDownButton />
+						</section>
+					</InfiniteScroll>
 				</div>
 			</main>
 		</>

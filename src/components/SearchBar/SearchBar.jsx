@@ -11,7 +11,7 @@ const SearchBar = (props) => {
 
 	return (
 		<>
-			<h2>Find all NFTs on an ETHEREUM address</h2>
+			{!props.address && <h2>Find all NFTs on an ETHEREUM address</h2>}
 			<form className="search-form" onSubmit={handleSubmit}>
 				<label htmlFor="searchInput">
 					Paste the ethereum address you want to check here:

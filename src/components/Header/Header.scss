@@ -9,11 +9,11 @@
 	align-items: center;
 	height: 10%;
 	position: fixed;
-	width: 100%;
+	width: 100vw;
 	z-index: 5;
-	font-size: 0.6rem;
+	font-size: 1rem;
 	@include tablet {
-		font-size: 1rem;
+		font-size: 1.2rem;
 	}
 
 	&__nav {

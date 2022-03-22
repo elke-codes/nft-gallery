@@ -2,12 +2,15 @@
 @use "../../styles/partials/mixins" as *;
 
 .login {
-	padding-top: 10%;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	flex-direction: column;
+	// @include tablet {
+	// 	padding-top: 15%;
+	// }
 	&__title {
 	}
 

@@ -2,7 +2,6 @@ import axios from "axios";
 import { transformMetadataUri } from "./transformMetadataUri";
 import { transformTokenUri } from "./transformTokenUri";
 import cantload from "../../src/assets/images/cantload.png";
-const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
 
 export const getNextPageNfts = async (address, cursor) => {
 	console.log("get next page nfts address cursor", address, cursor);

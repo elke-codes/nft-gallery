@@ -157,12 +157,11 @@ const NftCard = (props) => {
 							</h3>
 							{activeCard !== props.nft.metadata ? (
 								<p className="card__header-text--big">
-									{" "}
-									&#9660;
+									&#8965;
 								</p>
 							) : (
 								<p className="card__header-text--big">
-									&#9650;
+									&#8964;
 								</p>
 							)}
 						</div>

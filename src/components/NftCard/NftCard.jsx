@@ -14,6 +14,7 @@ const NftCard = (props) => {
 	const [contentType, setContentType] = useState("");
 	const [sourceType, setSourceType] = useState("");
 	const [showDescription, setShowDescription] = useState(null);
+	const [activeCard, setActiveCard] = useState(null);
 
 	useEffect(async () => {
 		// we need to check if props.nft.metadata && props.nft.metadata.animation_url exist, and if they do, we actually want to check  THAT
@@ -61,9 +62,23 @@ const NftCard = (props) => {
 		}
 	}, []);
 
+	const handleClick = (name) => {
+		// console.log(tokenId);
+		setActiveCard((currentItem) => (currentItem === null ? name : null));
+	};
+
 	return (
 		<>
-			<li className="card">
+			<li
+				className={
+					activeCard === props.nft.metadata.tokenId
+						? "card card--active"
+						: "card"
+				}
+				onClick={() => {
+					console.log("clicked", props.nft.metadata.name);
+					handleClick(props.nft.metadata.name);
+				}}>
 				<h2 className="card__title">
 					{props.nft.metadata && props.nft.metadata.name
 						? props.nft.metadata.name
@@ -81,7 +96,6 @@ const NftCard = (props) => {
 						}
 					/>
 				)}
-
 				{sourceType === SOURCE_TYPE_VIDEO && (
 					<video
 						controls
@@ -121,8 +135,18 @@ const NftCard = (props) => {
 						/>
 					</>
 				)}
-				<div className="card__overlay">
-					<div className="card__header">
+				<div
+					className={
+						activeCard === props.nft.metadata.name
+							? "card__overlay card__overlay--active"
+							: "card__overlay"
+					}>
+					<div
+						className={
+							activeCard === props.nft.metadata.name
+								? "card__header card__header--active"
+								: "card__header"
+						}>
 						{/* <svg
 							className="card__arc"
 							xmlns="http://www.w3.org/2000/svg">

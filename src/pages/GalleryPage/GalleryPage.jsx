@@ -12,11 +12,12 @@ import { Grid, Triangle } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const GalleryPage = () => {
-	const handleSearch = (address, celebrity) => {
+	const handleSearch = (address) => {
+		console.log("addrsss handlesearch gallerypage", address);
 		setAddress(address);
-		// setCelebrity(celebrity);
 		setLoading(true);
 	};
+
 	const [allFetchedNfts, setAllFetchedNfts] = useState([]);
 	const [totalCount, setTotalCount] = useState();
 	const [address, setAddress] = useState();

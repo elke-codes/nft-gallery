@@ -1,11 +1,33 @@
+import { ethers, providers } from "ethers";
 import React from "react";
 import "./SearchBar.scss";
+const INFURA_URL = `https://mainnet.infura.io/v3/b9cc108d012c4c0a859bdf1ef437a9c2`;
 
 const SearchBar = (props) => {
-	const handleSubmit = (e) => {
+	console.log("infura url", INFURA_URL);
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		props.onSearch(e.target.searchInput.value);
-		// console.log(e.target.searchInput.value);
+
+		// if e.target.searchInput.value includes .eth do resolve ens name into eth address
+		if (e.target.searchInput.value.includes(".eth")) {
+			try {
+				const provider = new ethers.providers.JsonRpcProvider(
+					INFURA_URL
+				);
+				const addressFromEns = await provider.resolveName(
+					e.target.searchInput.value
+				);
+				console.log("searchbar ens", addressFromEns);
+				props.onSearch(addressFromEns);
+			} catch (e) {
+				console.log("infura", e);
+				// TODO error message to user
+				// seterrormessage("couldn t find that address, please try again")
+			}
+		} else {
+			props.onSearch(e.target.searchInput.value);
+		}
+
 		e.target.reset();
 	};
 

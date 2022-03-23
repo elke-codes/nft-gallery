@@ -121,6 +121,7 @@ const GalleryPage = () => {
 							</>
 						)}
 					</div>
+
 					<InfiniteScroll
 						dataLength={displayedNfts.length}
 						next={getNftsToDisplay}

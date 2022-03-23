@@ -71,7 +71,7 @@ const NftCard = (props) => {
 		<>
 			<li
 				className={
-					activeCard === props.nft.metadata.tokenId
+					activeCard === props.nft.metadata.name
 						? "card card--active"
 						: "card"
 				}

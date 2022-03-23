@@ -3,8 +3,7 @@ import { transformMetadataUri } from "./transformMetadataUri";
 import { transformTokenUri } from "./transformTokenUri";
 import cantload from "../../src/assets/images/cantload.png";
 
-const API_KEY =
-	"csUE0cmbWJageAjqXURl5CahhEgpObzsuCpE5bjBKRQl16ArCB556UmPPvv8qGj7";
+const API_KEY = process.env.REACT_APP_MORALIS_API_KEY;
 export const getNfts = async (address) => {
 	console.log("getting nfts", address);
 

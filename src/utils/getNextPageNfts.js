@@ -6,14 +6,13 @@ const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
 
 export const getNextPageNfts = async (address, cursor) => {
 	console.log("get next page nfts address cursor", address, cursor);
-
+	const API_KEY = process.env.REACT_APP_MORALIS_API_KEY;
 	try {
 		const data = await axios.get(
 			`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal&cursor=${cursor}`,
 			{
 				headers: {
-					"X-API-KEY":
-						"csUE0cmbWJageAjqXURl5CahhEgpObzsuCpE5bjBKRQl16ArCB556UmPPvv8qGj7"
+					"X-API-KEY": API_KEY
 					// 	,
 					// "Access-Control-Allow-Origin": "*"
 				}

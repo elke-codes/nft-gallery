@@ -62,23 +62,19 @@ const NftCard = (props) => {
 		}
 	}, []);
 
-	const handleClick = (name) => {
-		// console.log(tokenId);
-		setActiveCard((currentItem) => (currentItem === null ? name : null));
+	const handleClick = (cardId) => {
+		console.log(cardId);
+		setActiveCard((currentItem) => (currentItem === null ? cardId : null));
 	};
 
 	return (
 		<>
 			<li
 				className={
-					activeCard === props.nft.metadata.name
+					activeCard === props.nft.metadata
 						? "card card--active"
 						: "card"
-				}
-				onClick={() => {
-					console.log("clicked", props.nft.metadata.name);
-					handleClick(props.nft.metadata.name);
-				}}>
+				}>
 				<h2 className="card__title">
 					{props.nft.metadata && props.nft.metadata.name
 						? props.nft.metadata.name
@@ -137,13 +133,16 @@ const NftCard = (props) => {
 				)}
 				<div
 					className={
-						activeCard === props.nft.metadata.name
+						activeCard === props.nft.metadata
 							? "card__overlay card__overlay--active"
 							: "card__overlay"
-					}>
+					}
+					onClick={() => {
+						handleClick(props.nft.metadata);
+					}}>
 					<div
 						className={
-							activeCard === props.nft.metadata.name
+							activeCard === props.nft.metadata
 								? "card__header card__header--active"
 								: "card__header"
 						}>
@@ -156,7 +155,11 @@ const NftCard = (props) => {
 							<h3 className="card__collection-name">
 								{props.nft.name ? props.nft.name : null}
 							</h3>
-							<p> &#8964;</p>
+							{activeCard !== props.nft.metadata ? (
+								<p> &#8964;</p>
+							) : (
+								<p>&#8963;</p>
+							)}
 						</div>
 					</div>
 					<p className="card__description">

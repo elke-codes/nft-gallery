@@ -19,9 +19,9 @@ const SearchBar = ({ onSearch, loadingNftsState, address }) => {
 				const provider = new ethers.providers.JsonRpcProvider(
 					INFURA_URL
 				);
-				const addressFromEns = await provider.resolveName(
-					e.target.searchInput.value
-				);
+				const inputValue = e.target.searchInput.value.toLowerCase();
+				console.log("inputvalue", inputValue);
+				const addressFromEns = await provider.resolveName(inputValue);
 				console.log("searchbar ens", addressFromEns);
 				onSearch(addressFromEns);
 			} catch (e) {

@@ -81,13 +81,21 @@
 	&--active {
 		transform: translateY(0);
 	}
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .card__header-text {
+	padding: 0 1rem;
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
 	align-items: baseline;
+	&--big {
+		font-size: 1.5rem;
+		color: #6a515e;
+	}
 }
 
 .card__arc {

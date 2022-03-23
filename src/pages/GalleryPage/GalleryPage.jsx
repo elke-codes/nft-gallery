@@ -136,7 +136,7 @@ const GalleryPage = () => {
 										textAlign: "center",
 										paddingTop: "2rem"
 									}}>
-									<b>Yay! You have seen it all</b>
+									<b>Yay! You have seen it all!</b>
 								</p>
 							)
 						}>

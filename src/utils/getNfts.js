@@ -2,19 +2,18 @@ import axios from "axios";
 import { transformMetadataUri } from "./transformMetadataUri";
 import { transformTokenUri } from "./transformTokenUri";
 import cantload from "../../src/assets/images/cantload.png";
-const IPFS_GATEWAY_PREFIX = "https://ipfs.io/";
-// TODO pass in cursor
-// return cursor
-// if cursor load next page
+
+const API_KEY = process.env.REACT_APP_MORALIS_API_KEY;
 export const getNfts = async (address) => {
 	console.log("getting nfts", address);
+
 	try {
 		const data = await axios.get(
 			`https://deep-index.moralis.io/api/v2/${address}/nft?chain=eth&format=decimal`,
 			{
 				headers: {
-					"X-API-KEY":
-						"csUE0cmbWJageAjqXURl5CahhEgpObzsuCpE5bjBKRQl16ArCB556UmPPvv8qGj7"
+					"X-API-KEY": API_KEY
+
 					// 	,
 					// "Access-Control-Allow-Origin": "*"
 				}

@@ -65,13 +65,16 @@ const SearchBar = ({ onSearch, loadingNftsState, address }) => {
 						Search!
 					</button>
 				</form>
-				<p>or</p>
+
 				{!address && (
-					<button
-						className="search-form__metamask-button"
-						onClick={handleMetaMask}>
-						Connect with MetaMask
-					</button>
+					<>
+						<p>or</p>
+						<button
+							className="search-form__metamask-button"
+							onClick={handleMetaMask}>
+							Connect with MetaMask
+						</button>
+					</>
 				)}
 				{resolvingEns && (
 					<Triangle>

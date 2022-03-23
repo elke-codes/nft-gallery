@@ -13,6 +13,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const GalleryPage = () => {
 	const handleSearch = (address) => {
+		if (!address) return;
 		console.log("addrsss handlesearch gallerypage", address);
 		setAddress(address);
 		setLoadingNfts(true);
@@ -93,7 +94,7 @@ const GalleryPage = () => {
 							// }}
 						/>
 					</div>
-					{loadingNfts && (
+					{address && loadingNfts && (
 						<>
 							<Triangle
 								type="Triangle"

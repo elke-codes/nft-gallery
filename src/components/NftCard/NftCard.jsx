@@ -146,11 +146,11 @@ const NftCard = (props) => {
 								? "card__header card__header--active"
 								: "card__header"
 						}>
-						{/* <svg
+						<svg
 							className="card__arc"
 							xmlns="http://www.w3.org/2000/svg">
 							<path />
-						</svg> */}
+						</svg>
 						<div className="card__header-text">
 							<h3 className="card__collection-name">
 								{props.nft.name ? props.nft.name : null}

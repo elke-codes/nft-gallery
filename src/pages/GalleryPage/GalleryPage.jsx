@@ -1,14 +1,12 @@
 import NftList from "../../components/NftList/NftList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getNfts } from "../../utils/getNfts";
-import CelebrityList from "../../components/CelebrityList/CelebrityList";
 import "./GalleryPage.scss";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
-import useInfiniteScroll from "../../utils/useInfitniteScroll";
 import ScrollDownButton from "../../components/ScrollDownButton/ScrollDownButton";
-import { Grid, Triangle } from "react-loader-spinner";
+import { Triangle } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const GalleryPage = () => {
@@ -136,7 +134,7 @@ const GalleryPage = () => {
 										textAlign: "center",
 										paddingTop: "2rem"
 									}}>
-									<b>Yay! You have seen it all!</b>
+									<b>Yay! You have seen it all !</b>
 								</p>
 							)
 						}>

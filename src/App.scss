@@ -1,4 +1,5 @@
 @use "./styles/partials/colors" as *;
+@use "./styles/partials/mixins" as *;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,400&display=swap");
 :root {
 	--surface-color: #fff;
@@ -32,6 +33,10 @@ p {
 video {
 	width: 100%;
 	height: 40%;
+	margin-bottom: 3rem;
+	@include tablet {
+		margin-bottom: 0;
+	}
 }
 
 audio {

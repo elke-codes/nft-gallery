@@ -15,7 +15,7 @@ const GalleryPage = () => {
 	const handleSearch = (address) => {
 		console.log("addrsss handlesearch gallerypage", address);
 		setAddress(address);
-		setLoading(true);
+		setLoadingNfts(true);
 	};
 
 	const [allFetchedNfts, setAllFetchedNfts] = useState([]);
@@ -26,7 +26,7 @@ const GalleryPage = () => {
 	const [displayedNfts, setDisplayedNfts] = useState([]);
 	const batchSize = 20;
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [loading, setLoading] = useState(false);
+	const [loadingNfts, setLoadingNfts] = useState(false);
 	const [cursor, setCursor] = useState("");
 	const hasMore = totalCount > displayedNfts.length;
 
@@ -59,10 +59,11 @@ const GalleryPage = () => {
 		setCurrentIndex(0);
 		setDisplayedNfts([]);
 		//call the api to fetch the nfts for the current address
+		// TODO ERROR HANDLING MESSAGE TO USERS
 		const { nfts, totalCount, cursor } = await getNfts(address);
 		//store all nfts fetched from the api in state
 		setAllFetchedNfts(nfts);
-		setLoading(false);
+		setLoadingNfts(false);
 		setTotalCount(totalCount);
 		setCursor(cursor);
 	}, [address]);
@@ -70,17 +71,29 @@ const GalleryPage = () => {
 	useEffect(() => {
 		getNftsToDisplay();
 	}, [allFetchedNfts]);
-	console.log("totalcount", totalCount);
-	console.log("hasmore", hasMore);
+
+	// const loadingNftsState = (inputFromSearch) => {
+	// 	console.log("loading nft state called");
+	// 	setLoadingNfts(inputFromSearch);
+	// };
+
+	// console.log("loadingNfts", loadingNfts);
+
 	return (
 		<>
 			{console.log("rendering")}
 			<main className="gallery">
 				<div className="gallery__main-container">
 					<div className="gallery__search-container">
-						<SearchBar onSearch={handleSearch} address={address} />
+						<SearchBar
+							onSearch={handleSearch}
+							address={address}
+							// loadingNftsState={() => {
+							// 	loadingNftsState();
+							// }}
+						/>
 					</div>
-					{loading && (
+					{loadingNfts && (
 						<>
 							<Triangle
 								type="Triangle"
@@ -94,7 +107,7 @@ const GalleryPage = () => {
 					)}
 
 					<div className="gallery__found-info">
-						{!loading && address && (
+						{!loadingNfts && address && (
 							<>
 								<p className="gallery__found-info--bold">
 									ETH address:{" "}
@@ -113,7 +126,7 @@ const GalleryPage = () => {
 						next={getNftsToDisplay}
 						hasMore={hasMore}
 						style={{ overflow: " unset", paddingBottom: "3rem" }}
-						// loader={<h4>Loading...</h4>}
+						// loader={<h4>loadingNfts...</h4>}
 
 						endMessage={
 							displayedNfts.length > 0 && (

@@ -29,6 +29,8 @@ const GalleryPage = () => {
 	const [cursor, setCursor] = useState("");
 	const hasMore = totalCount > displayedNfts.length;
 
+	const [resolvingEns, setResolvingEns] = useState(false);
+
 	const getNftsToDisplay = () => {
 		if (!allFetchedNfts.length) {
 			console.log("no length of all nfts, exiting early");
@@ -87,9 +89,8 @@ const GalleryPage = () => {
 						<SearchBar
 							onSearch={handleSearch}
 							address={address}
-							// loadingNftsState={() => {
-							// 	loadingNftsState();
-							// }}
+							resolvingEns={resolvingEns}
+							setResolvingEns={setResolvingEns}
 						/>
 					</div>
 					{address && loadingNfts && (
@@ -106,7 +107,7 @@ const GalleryPage = () => {
 					)}
 
 					<div className="gallery__found-info">
-						{!loadingNfts && address && (
+						{!loadingNfts && !resolvingEns && address && (
 							<>
 								<p className="gallery__found-info--bold">
 									ETH address:{" "}

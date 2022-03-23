@@ -4,8 +4,7 @@ import { Triangle } from "react-loader-spinner";
 import "./SearchBar.scss";
 const INFURA_URL = process.env.REACT_APP_INFURA_URL;
 
-const SearchBar = ({ onSearch, loadingNftsState, address }) => {
-	const [resolvingEns, setResolvingEns] = useState(false);
+const SearchBar = ({ onSearch, address, resolvingEns, setResolvingEns }) => {
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const handleSubmit = async (e) => {

@@ -10,9 +10,13 @@ import { Triangle } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const GalleryPage = () => {
+	const [errorMessage, setErrorMessage] = useState("");
 	const handleSearch = (address) => {
-		if (!address) return;
-		console.log("addrsss handlesearch gallerypage", address);
+		// if (!address) {
+		// 	setErrorMessage("Please enter and address");
+		// 	return;
+		// }
+		setErrorMessage("");
 		setAddress(address);
 		setLoadingNfts(true);
 	};
@@ -28,7 +32,7 @@ const GalleryPage = () => {
 	const [loadingNfts, setLoadingNfts] = useState(false);
 	const [cursor, setCursor] = useState("");
 	const hasMore = totalCount > displayedNfts.length;
-
+	// const [errorMessage, setErrorMessage] = useState("");
 	const [resolvingEns, setResolvingEns] = useState(false);
 
 	const getNftsToDisplay = () => {
@@ -56,12 +60,22 @@ const GalleryPage = () => {
 	//when the address changes, wait for the api call to resolve then use that data to start populating the component
 	useEffect(async () => {
 		if (!address) return;
+
 		//when the address changes, reset the current index and displayednfts
 		setCurrentIndex(0);
 		setDisplayedNfts([]);
 		//call the api to fetch the nfts for the current address
 		// TODO ERROR HANDLING MESSAGE TO USERS
-		const { nfts, totalCount, cursor } = await getNfts(address);
+		const { nfts, totalCount, cursor, axiosErrorMessage } = await getNfts(
+			address
+		);
+		console.log("axioserrormessage", axiosErrorMessage);
+		if (axiosErrorMessage) {
+			setErrorMessage(axiosErrorMessage);
+			setLoadingNfts(false);
+			setResolvingEns(false);
+			return;
+		}
 		//store all nfts fetched from the api in state
 		setAllFetchedNfts(nfts);
 		setLoadingNfts(false);
@@ -73,16 +87,8 @@ const GalleryPage = () => {
 		getNftsToDisplay();
 	}, [allFetchedNfts]);
 
-	// const loadingNftsState = (inputFromSearch) => {
-	// 	console.log("loading nft state called");
-	// 	setLoadingNfts(inputFromSearch);
-	// };
-
-	// console.log("loadingNfts", loadingNfts);
-
 	return (
 		<>
-			{console.log("rendering")}
 			<main className="gallery">
 				<div className="gallery__main-container">
 					<div className="gallery__search-container">
@@ -91,6 +97,8 @@ const GalleryPage = () => {
 							address={address}
 							resolvingEns={resolvingEns}
 							setResolvingEns={setResolvingEns}
+							errorMessage={errorMessage}
+							setErrorMessage={setErrorMessage}
 						/>
 					</div>
 					{address && loadingNfts && (
@@ -105,28 +113,41 @@ const GalleryPage = () => {
 							<p>Loading NFTs ...</p>
 						</>
 					)}
-
-					<div className="gallery__found-info">
-						{!loadingNfts && !resolvingEns && address && (
+					{resolvingEns && (
+						<>
+							<Triangle type="Triangle" height={80} width={80} />
+							<p>Resolving address... </p>
+						</>
+					)}
+					{!resolvingEns && !loadingNfts && address && (
+						<div className="gallery__found-info">
 							<>
 								<p className="gallery__found-info--bold">
 									ETH address:{" "}
 								</p>
 								<p> {address}</p>
-								<p className="gallery__found-info--bold">
-									Total NFT found on this address:{" "}
-								</p>
+								{!errorMessage && (
+									<p className="gallery__found-info--bold">
+										Total NFT found on this address:{" "}
+									</p>
+								)}
 
 								<p> {totalCount}</p>
 							</>
-						)}
-					</div>
+						</div>
+					)}
+					{/* {!errorMessage && (
+						<p className="errormessage">{errorMessage}</p>
+					)} */}
 
 					<InfiniteScroll
 						dataLength={displayedNfts.length}
 						next={getNftsToDisplay}
 						hasMore={hasMore}
-						style={{ overflow: " unset", paddingBottom: "3rem" }}
+						style={{
+							overflow: " unset",
+							paddingBottom: "3rem"
+						}}
 						// loader={<h4>loadingNfts...</h4>}
 
 						endMessage={
@@ -142,6 +163,9 @@ const GalleryPage = () => {
 						}>
 						<section className="gallery__gallery">
 							{displayedNfts && (
+								// !errorMessage &&
+								// !loadingNfts &&
+								// !resolvingEns &&
 								<NftList displayedNfts={displayedNfts} />
 							)}
 							<ScrollUpButton />

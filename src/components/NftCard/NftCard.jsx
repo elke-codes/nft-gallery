@@ -153,7 +153,7 @@ const NftCard = (props) => {
 						</svg>
 						<div className="card__header-text">
 							<h3 className="card__collection-name">
-								{props.nft.name ? props.nft.name : null}
+								{props.nft.name ? props.nft.name : " "}
 							</h3>
 							{activeCard !== props.nft.metadata ? (
 								<p className="card__header-text--big">

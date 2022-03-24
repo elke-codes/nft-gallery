@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
 	return (
-		<main>
+		<main className="homepage__wrapper">
 			<section className="homepage">
 				<h2 className="homepage__title">Welcome to my NFT Gallery!</h2>
 				<p className="homepage__copy">
@@ -39,6 +39,9 @@ const HomePage = () => {
 					</button>
 				</div>
 			</section>
+			{/* <p className="homepage__thanks">
+				with big thanks to Jeff, who helped me navigate new terrain
+			</p> */}
 		</main>
 	);
 };

@@ -4,16 +4,30 @@ import { Triangle } from "react-loader-spinner";
 import "./SearchBar.scss";
 const INFURA_URL = process.env.REACT_APP_INFURA_URL;
 
-const SearchBar = ({ onSearch, address, resolvingEns, setResolvingEns }) => {
-	const [errorMessage, setErrorMessage] = useState("");
+const SearchBar = ({
+	onSearch,
+	address,
+	resolvingEns,
+	setResolvingEns,
+	errorMessage,
+	setErrorMessage
+}) => {
+	// const [errorMessage, setErrorMessage] = useState("");
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		console.log("handlesubmit");
+		console.log("searchinput", e.target.searchInput.value);
+		// if (e.target.searchInput.value === "") {
+		// 	setErrorMessage("Please enter and address");
+		// 	return;
+		// }
+		setErrorMessage("");
+
 		// loadingNftsState(true);
 		// if e.target.searchInput.value includes .eth do resolve ens name into eth address
 		if (e.target.searchInput.value.includes(".eth")) {
 			setResolvingEns(true);
-
 			try {
 				const provider = new ethers.providers.JsonRpcProvider(
 					INFURA_URL
@@ -21,7 +35,7 @@ const SearchBar = ({ onSearch, address, resolvingEns, setResolvingEns }) => {
 				const addressFromEns = await provider.resolveName(
 					e.target.searchInput.value
 				);
-				console.log("searchbar ens", addressFromEns);
+				setErrorMessage("");
 				onSearch(addressFromEns);
 			} catch (e) {
 				// console.log("infura", e);
@@ -64,6 +78,7 @@ const SearchBar = ({ onSearch, address, resolvingEns, setResolvingEns }) => {
 						Search!
 					</button>
 				</form>
+				{errorMessage && <p className="errormessage">{errorMessage}</p>}
 
 				{!address && (
 					<>
@@ -75,12 +90,6 @@ const SearchBar = ({ onSearch, address, resolvingEns, setResolvingEns }) => {
 						</button>
 					</>
 				)}
-				{resolvingEns && (
-					<Triangle>
-						<p>Resolving address... </p>
-					</Triangle>
-				)}
-				{errorMessage && <p>{errorMessage}</p>}
 			</div>
 		</>
 	);

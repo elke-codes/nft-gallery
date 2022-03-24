@@ -77,6 +77,8 @@ export const getNfts = async (address) => {
 		};
 	} catch (e) {
 		console.log("axios error", e);
-		return;
+		const axiosErrorMessage =
+			"Couldn't find address :'( . Please check address, try another one";
+		return { axiosErrorMessage };
 	}
 };

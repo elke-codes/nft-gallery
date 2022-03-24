@@ -22,10 +22,17 @@
 
 	@include tablet {
 		width: 20%;
-		height: 600px;
+		height: 500px;
+	}
+	@include desktop {
+		padding-bottom: 0;
 	}
 	&--active {
 		transform: translateY(0);
+	}
+
+	&__title {
+		min-height: 2rem;
 	}
 
 	&__button-container {

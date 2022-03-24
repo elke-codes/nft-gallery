@@ -2,8 +2,11 @@ import axios from "axios";
 import { transformMetadataUri } from "./transformMetadataUri";
 import { transformTokenUri } from "./transformTokenUri";
 import cantload from "../../src/assets/images/cantload.png";
+import { getTokenMetadata } from "./getTokenMetadata";
 
 const API_KEY = process.env.REACT_APP_MORALIS_API_KEY;
+const INFURA_URL = process.env.REACT_APP_INFURA_URL;
+
 export const getNfts = async (address) => {
 	console.log("getting nfts", address);
 
@@ -58,17 +61,29 @@ export const getNfts = async (address) => {
 						imageSrc = metadata.image;
 					}
 				} else {
-					// console.log("using placeholder for", nft);
-					imageSrc = cantload;
+					try {
+						//do erc721 stuff
+						const tokenMetadata = await getTokenMetadata(
+							address,
+							nft.token_id
+						);
+						console.log("tokenMetadata", tokenMetadata);
+						console.log("using placeholder for", nft);
+						console.log("imageSrc", nft.imageSrc);
+					} catch (e) {
+						imageSrc = cantload;
+					}
 				}
+
+				const tokenId = nft.token_id;
 
 				nft.metadata = metadata;
 				nft.imageSrc = imageSrc;
-				return nft;
+				return { nft, tokenId };
 			})
 		);
-		console.log("length nfts get nfts", nfts.length);
-		console.log("nft count", data.data.total);
+		// console.log("length nfts get nfts", nfts.length);
+		// console.log("nft count", data.data.total);
 
 		return {
 			nfts,

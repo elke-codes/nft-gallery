@@ -65,8 +65,8 @@ export const getNextPageNfts = async (address, cursor) => {
 				return nft;
 			})
 		);
-		console.log("length nfts getnextpagenfts", nextNfts.length);
-		console.log("nft count", data.data.total);
+		// console.log("length nfts getnextpagenfts", nextNfts.length);
+		// console.log("nft count", data.data.total);
 
 		return {
 			nextNfts,

@@ -11,7 +11,8 @@ const NftList = (props) => {
 						return (
 							<NftCard
 								nft={nft}
-								key={nft.token_address + i}
+								// key={nft.token_address + i}
+								key={i}
 								index={i}
 							/>
 						);

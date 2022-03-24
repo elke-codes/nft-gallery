@@ -32,6 +32,8 @@ const SearchBar = ({
 				const provider = new ethers.providers.JsonRpcProvider(
 					INFURA_URL
 				);
+				console.log("resolving ens searchbar", resolvingEns);
+
 				const addressFromEns = await provider.resolveName(
 					e.target.searchInput.value
 				);
@@ -80,7 +82,7 @@ const SearchBar = ({
 				</form>
 				{errorMessage && <p className="errormessage">{errorMessage}</p>}
 
-				{!address && (
+				{!address && !resolvingEns && (
 					<>
 						<p>or</p>
 						<button

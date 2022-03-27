@@ -23,12 +23,9 @@ export const getNfts = async (address) => {
 			}
 		);
 
-		// console.log("Data", data);
-		// console.log("get nfts cursor", data.data.cursor);
 		const nfts = await Promise.all(
 			// reliably return an array from this function
 			(data.data.result || []).map(async (nft) => {
-				// console.log("in loop");
 				let metadata;
 				// if the nft response from moralis contains valid metadata,
 				// we can use that directly, they parsed it for us.
@@ -64,12 +61,12 @@ export const getNfts = async (address) => {
 					try {
 						//do erc721 stuff
 						const tokenMetadata = await getTokenMetadata(
-							address,
+							nft.token_address,
 							nft.token_id
 						);
 						console.log("tokenMetadata", tokenMetadata);
-						console.log("using placeholder for", nft);
-						console.log("imageSrc", nft.imageSrc);
+						// TODO get the metadata like with moralis
+						// imageSrc = metadata.
 					} catch (e) {
 						imageSrc = cantload;
 					}

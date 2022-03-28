@@ -29,9 +29,10 @@ export const getTokenMetadata = async (address, tokenId) => {
 	console.log("URI", URI);
 
 	const transformedUri = transformMetadataUri(URI);
-	console.log("transformedUri", transformedUri);
-	const metadata = await axios.get(transformedUri);
-
+	// console.log("transformedUri", transformedUri);
+	const metadata = await axios.get(transformedUri, {
+		timeout: 2 * 1000
+	});
 	console.log("metadata", metadata);
 	return metadata;
 };
